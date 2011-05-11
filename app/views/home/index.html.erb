@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+
+<div class="container_16">
+<div id="commit" class="grid_12">
+ <%= @commit.msg %>
+</div>
+<div class="grid_12">&nbsp;</div>
+<div id="usernav" class="grid_4">
+<%= link_to 'Help Rate Commits', commits_path %>
+</div>
+
+<div id="details" class="grid_12">
+
+<p>
+  <b>id:</b>
+  <%= @commit.id %>
+</p>
+<p>
+  <b>Revision:</b>
+  <%= @commit.revision %>
+</p>
+
+<p>
+  <b>Author:</b>
+  <%= @commit.author %>
+</p>
+
+<p>
+  <b>Msg:</b>
+  <%= @commit.msg %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @commit.date %>
+</p>
+
+<p>
+  <b>Total ups:</b>
+  <%= @commit.total_ups %>
+</p>
+
+<p>
+  <b>Total downs:</b>
+  <%= @commit.total_downs %>
+</p>
+
+</div>
+</div>

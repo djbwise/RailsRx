@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RateMyCommit</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+<div class="container_16">
+  <div class="grid_10">&nbsp;</div>
+    <div id="usernav" class="grid_6">
+    
+      <% if user_signed_in? %>
+        Signed in as <%= current_user.email %>.
+        <%= link_to "Sign out", destroy_user_session_path %>
+      <% elsif 0 %>
+		<%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+      <% end %>
+    </div>
+	<div class="clear"> </div>  
+
+  
+
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+<%= yield %>
+</div>
+</body>
+</html>
