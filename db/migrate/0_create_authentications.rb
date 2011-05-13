@@ -8,6 +8,9 @@ class CreateAuthentications < ActiveRecord::Migration
 
       t.timestamps
     end
+    
+    add_index :authentications, :user_id
+    add_index :authentications, :uid, :unique => true
   end
 
   def self.down
