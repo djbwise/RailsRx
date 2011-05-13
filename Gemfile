@@ -5,10 +5,10 @@ gem 'rails', '3.0.3'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2'
+#gem 'mysql2'
 
-gem 'devise', :git => "http://github.com/plataformatec/devise.git" 
-gem "oa-oauth", :require => "omniauth/oauth"
+gem 'devise'
+gem 'omniauth'
 gem 'fb_graph'
 
 gem 'delayed_job'

@@ -1,7 +1,9 @@
 RateMyCommit::Application.routes.draw do
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-
+  match '/auth/:provider/callback' => 'authentications#create' 
+  devise_for :admins
+  devise_for :users,  :controllers => { :registrations => 'registrations' } 
+  resources :authentications
   root :to => "home#index"
 
   # The priority is based upon order of creation:

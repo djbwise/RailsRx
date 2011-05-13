@@ -1,6 +1,6 @@
-class UsersController < ApplicationController
-  # GET m/users
-  #include FbGraph::User
+class MobileAuthController < ApplicationController
+  # mobile authentication services...TODO: update facebook authorizing to be generic oauth provider?
+  # add this to routes if you are going to use it
   
   def sign_up
     
@@ -38,11 +38,12 @@ class UsersController < ApplicationController
     #verify this token by calling graph api
     begin
       fb_user = FbGraph::User.me(params[:fb_auth_token]).fetch
-      user = User.find_by_facebook_id(fb_user.identifier)
-      if !user
+      authentication = Authentications.find_by_uid(fb_user.identifier)
+      user = User.find(authentication.user_id) if authentication
+      if fb_user && !user
         #create the user?
-        user = User.create!(:email => fb_user.email, :password => "fb_user_no_password", 
-                            :facebook_id => fb_user.identifier, :facebook_access_token => params[:fb_auth_token])
+        user = User.create!(:email => fb_user.email, :password => Devise.friendly_token[0,20])
+        user.authentications.create(:provider => "facebook", :uid => fb_user.identifier, :token => params[:fb_auth_token]) 
       end
     rescue
       #auth failed...what to do here?

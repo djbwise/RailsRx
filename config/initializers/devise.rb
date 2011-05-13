@@ -3,7 +3,7 @@
 Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in DeviseMailer.
-  config.mailer_sender = "rx@9mmedia.com"
+  config.mailer_sender = "please-change-me-at-config-initializers-devise@example.com"
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
@@ -34,7 +34,7 @@ Devise.setup do |config|
   # Configure which authentication keys should be case-insensitive.
   # These keys will be downcased upon creating or modifying a user and when used
   # to authenticate or find a user. Default is :email.
-  # config.case_insensitive_keys = [ :email ]
+  config.case_insensitive_keys = [ :email ]
 
   # Tell if authentication through request.params is enabled. True by default.
   # config.params_authenticatable = true
@@ -53,6 +53,9 @@ Devise.setup do |config|
   # using other encryptors, it sets how many times you want the password re-encrypted.
   config.stretches = 10
 
+  # Setup a pepper to generate the encrypted password.
+  # config.pepper = "6ee536e8d91005e851140310beadbf225e5cd9eaa2894ccf826756dd9eedcc9230cb25b5920bc7d41aba015ca7f551bc8c78603e70a3d5b4b4b236d8173b49d7"
+
   # ==> Configuration for :confirmable
   # The time you want to give your user to confirm his account. During this time
   # he will be able to access your application without confirming. Default is 0.days
@@ -62,9 +65,12 @@ Devise.setup do |config|
   # (ie 2 days).
   # config.confirm_within = 2.days
 
+  # Defines which key will be used when confirming an account
+  # config.confirmation_keys = [ :email ]
+
   # ==> Configuration for :rememberable
   # The time the user will be remembered without asking for credentials again.
-  config.remember_for = 2.weeks
+  # config.remember_for = 2.weeks
 
   # If true, a valid remember token can be re-used between multiple browsers.
   # config.remember_across_browsers = true
@@ -74,11 +80,15 @@ Devise.setup do |config|
 
   # If true, uses the password salt as remember token. This should be turned
   # to false if you are not using database authenticatable.
-  config.use_salt_as_remember_token = false
+  config.use_salt_as_remember_token = true
+
+  # Options to be passed to the created cookie. For instance, you can set
+  # :secure => true in order to force SSL only cookies.
+  # config.cookie_options = {}
 
   # ==> Configuration for :validatable
-  # Range for password length. Default is 6..20.
-  config.password_length = 1..20
+  # Range for password length. Default is 6..128.
+  # config.password_length = 6..128
 
   # Regex to use to validate the email address
   # config.email_regexp = /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\z/i
@@ -94,6 +104,9 @@ Devise.setup do |config|
   # :none            = No lock strategy. You should handle locking by yourself.
   # config.lock_strategy = :failed_attempts
 
+  # Defines which key will be used when locking and unlocking an account
+  # config.unlock_keys = [ :email ]
+
   # Defines which strategy will be used to unlock an account.
   # :email = Sends an unlock link to the user email
   # :time  = Re-enables login after a certain amount of time (see :unlock_in below)
@@ -108,6 +121,16 @@ Devise.setup do |config|
   # Time interval to unlock the account if :time is enabled as unlock_strategy.
   # config.unlock_in = 1.hour
 
+  # ==> Configuration for :recoverable
+  #
+  # Defines which key will be used when recovering the password for an account
+  # config.reset_password_keys = [ :email ]
+
+  # Time interval you can reset your password with a reset password key.
+  # Don't put a too small interval or your users won't have the time to
+  # change their passwords.
+  config.reset_password_within = 2.hours
+
   # ==> Configuration for :encryptable
   # Allow you to use another encryption algorithm besides bcrypt (default). You can use
   # :sha1, :sha512 or encryptors from others authentication tools as :clearance_sha1,
@@ -116,16 +139,13 @@ Devise.setup do |config|
   # REST_AUTH_SITE_KEY to pepper)
   # config.encryptor = :sha512
 
-  # Setup a pepper to generate the encrypted password.
-  # config.pepper = "36f8e35f12432c8654276d76859a424ddf40c20f2800e06d9fb6a768c1eebb7a64306b6beb55c0bafe1bcecbbae8b9b35497a18c1249967b23d1a599b6288264"
-
   # ==> Configuration for :token_authenticatable
   # Defines name of the authentication token params key
-  config.token_authentication_key = :authentication_token
+  # config.token_authentication_key = :auth_token
 
   # If true, authentication through token does not store user in session and needs
   # to be supplied on each request. Useful if you are using the token as API token.
-  config.stateless_token = true
+  # config.stateless_token = false
 
   # ==> Scopes configuration
   # Turn scoped views on. Before rendering "sessions/new", it will first check for
@@ -150,8 +170,9 @@ Devise.setup do |config|
   # If you have any extra navigational formats, like :iphone or :mobile, you
   # should add them to the navigational formats lists.
   #
-  # The :"*/*" format below is required to match Internet Explorer requests.
-  # config.navigational_formats = [:"*/*", :html]
+  # The :"*/*" and "*/*" formats below is required to match Internet
+  # Explorer requests.
+  # config.navigational_formats = [:"*/*", "*/*", :html]
 
   # The default HTTP method used to sign out a resource. Default is :get.
   # config.sign_out_via = :get
@@ -170,13 +191,4 @@ Devise.setup do |config|
   #   manager.intercept_401 = false
   #   manager.default_strategies(:scope => :user).unshift :some_external_strategy
   # end
-  
- # config.omniauth :facebook, "a635d8cbf33589a0843e44d0ec59d7b5", "00232beb29a887ba37755c806398a737",
-    #:scope=user_photos,email,user_birthday,user_online_presence,offline_access
-config.omniauth :facebook, '3ad2592bbb72dda67874018569cd8a86', '2113644d35de08f2fc149a40644f42a3' 
- # :site => 'https://graph.facebook.com/',
-  #:authorize_path => '/oauth/authorize',
-  #:access_token_path => '/oauth/access_token',
-  #:scope => %w(email)
-  
 end

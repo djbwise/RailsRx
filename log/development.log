@@ -1,0 +1,2997 @@
+  [1m[36mSQL (4.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (3.2ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("schema_migrations")
+  [1m[36mSQL (2.8ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+Migrating to DeviseCreateUsers (20101205182705)
+  [1m[36mSQL (0.8ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(128) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "remember_token" varchar(255), "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "authentication_token" varchar(255), "first_name" varchar(255), "last_name" varchar(255), "facebook_id" varchar(255), "facebook_access_token" varchar(255), "profile_image" varchar(255), "is_active" boolean DEFAULT 't', "status" integer DEFAULT 0, "created_by" integer, "sync_token" integer, "deleted" boolean, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("users")
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20101205182705')
+Migrating to CreateDelayedJobs (20110427215004)
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.4ms)[0m  CREATE TABLE "delayed_jobs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "priority" integer DEFAULT 0, "attempts" integer DEFAULT 0, "handler" text, "last_error" text, "run_at" datetime, "locked_at" datetime, "failed_at" datetime, "locked_by" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("delayed_jobs")[0m
+  [1m[35mSQL (0.2ms)[0m  CREATE INDEX "delayed_jobs_priority" ON "delayed_jobs" ("priority", "run_at")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20110427215004')[0m
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mPRAGMA index_list("delayed_jobs")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_info('delayed_jobs_priority')
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_info('index_users_on_reset_password_token')
+
+
+Started GET "/" for 127.0.0.1 at Wed May 11 16:14:28 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 12ms (Views: 12.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/auth/facebook" for 127.0.0.1 at Wed May 11 16:14:34 -0400 2011
+
+
+Started GET "/" for 127.0.0.1 at Wed May 11 16:16:00 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (99.2ms)
+Completed 200 OK in 107ms (Views: 106.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed May 11 16:17:10 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (89.1ms)
+Completed 200 OK in 96ms (Views: 95.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Wed May 11 16:17:17 -0400 2011
+  Processing by Devise::RegistrationsController#new as HTML
+Rendered devise/shared/_links.erb (2.2ms)
+Rendered devise/registrations/new.html.erb within layouts/application (82.3ms)
+Completed 200 OK in 115ms (Views: 92.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at Wed May 11 16:17:23 -0400 2011
+  Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"Fb2CKHqPXvEiRrTtAokH5KhtZqLytKi4sdwYXXtkxlY=", "utf8"=>"✓", "user"=>{"password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]", "email"=>"asdf@adf.com"}}
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users"."id" FROM "users" WHERE (LOWER("users"."email") = LOWER('asdf@adf.com')) LIMIT 1
+  [1m[36mAREL (0.5ms)[0m  [1mINSERT INTO "users" ("remember_created_at", "facebook_access_token", "created_at", "email", "status", "updated_at", "sync_token", "last_name", "sign_in_count", "deleted", "last_sign_in_at", "is_active", "last_sign_in_ip", "encrypted_password", "profile_image", "current_sign_in_at", "reset_password_token", "remember_token", "current_sign_in_ip", "first_name", "authentication_token", "facebook_id", "created_by") VALUES (NULL, NULL, NULL, 'asdf@adf.com', 0, NULL, NULL, NULL, 0, NULL, NULL, 't', NULL, '$2a$10$6gjpI40L7qiHHfSqEnbNOuvv1N0wnZ9mM0Dr4q9.zSEpMMNIxF5ai', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)[0m
+Completed   in 118ms
+
+NoMethodError (undefined method `active?' for #<User:0x103111fa8>):
+  app/controllers/devise/registrations_controller.rb:17:in `create'
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (6.4ms)
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.2ms)
+
+
+Started GET "/users" for 127.0.0.1 at Wed May 11 16:22:46 -0400 2011
+
+ActionController::RoutingError (No route matches "/users"):
+  
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at Wed May 11 16:22:54 -0400 2011
+  Processing by Devise::SessionsController#new as HTML
+Rendered devise/sessions/new.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 49ms (Views: 14.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at Wed May 11 16:22:57 -0400 2011
+  Processing by Devise::SessionsController#new as HTML
+Rendered devise/sessions/new.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 46ms (Views: 14.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at Wed May 11 16:26:45 -0400 2011
+  Processing by Devise::SessionsController#new as HTML
+Rendered devise/shared/_links.erb (1.6ms)
+Rendered devise/sessions/new.html.erb within layouts/application (10.7ms)
+Completed 200 OK in 43ms (Views: 18.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Wed May 11 16:26:50 -0400 2011
+  Processing by Devise::RegistrationsController#new as HTML
+Rendered devise/shared/_links.erb (2.0ms)
+Rendered devise/registrations/new.html.erb within layouts/application (25.9ms)
+Completed 200 OK in 134ms (Views: 35.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at Wed May 11 16:26:54 -0400 2011
+  Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"Fb2CKHqPXvEiRrTtAokH5KhtZqLytKi4sdwYXXtkxlY=", "utf8"=>"✓", "user"=>{"password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]", "email"=>"asdf@asdf.comadff"}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users"."id" FROM "users" WHERE (LOWER("users"."email") = LOWER('asdf@asdf.comadff')) LIMIT 1
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "users" ("is_active", "sign_in_count", "last_sign_in_at", "reset_password_token", "first_name", "remember_created_at", "authentication_token", "last_name", "facebook_access_token", "sync_token", "email", "status", "remember_token", "profile_image", "deleted", "updated_at", "current_sign_in_ip", "created_at", "facebook_id", "created_by", "last_sign_in_ip", "current_sign_in_at", "encrypted_password") VALUES ('t', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'asdf@asdf.comadff', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '$2a$10$XaE7jRo0DJqr8DeEYJgCt.E9sEMmvJtt4yAhorfi4zN.lxU/z/WCi')[0m
+Completed   in 110ms
+
+NoMethodError (undefined method `active?' for #<User:0x102cc2970>):
+  app/controllers/devise/registrations_controller.rb:17:in `create'
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (7.0ms)
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (79.8ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed May 11 16:39:42 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (15.7ms)
+Completed   in 24ms
+
+ActionView::Template::Error (undefined method `user_omniauth_authorize_path' for #<#<Class:0x1032cb6a0>:0x1032c8810>):
+    15:         Signed in as <%= current_user.email %>.
+    16:         <%= link_to "Sign out", destroy_user_session_path %>
+    17:       <% else %>
+    18: 		<%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+    19: 		<%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Sign in", new_user_session_path %>
+    20:       <% end %>
+    21:     </div>
+  app/views/layouts/application.html.erb:18:in `_app_views_layouts_application_html_erb___2118023122_2174090960_0'
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.3ms)
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (8.5ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed May 11 16:48:12 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (12.7ms)
+Completed   in 21ms
+
+ActionView::Template::Error (undefined method `user_omniauth_authorize_path' for #<#<Class:0x1032ccf28>:0x1032cacf0>):
+    15:         Signed in as <%= current_user.email %>.
+    16:         <%= link_to "Sign out", destroy_user_session_path %>
+    17:       <% else %>
+    18: 		<%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+    19: 		<%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Sign in", new_user_session_path %>
+    20:       <% end %>
+    21:     </div>
+  app/views/layouts/application.html.erb:18:in `_app_views_layouts_application_html_erb___2118023122_2174102620_0'
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.6ms)
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.8ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed May 11 16:48:47 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (86.5ms)
+Completed   in 94ms
+
+ActionView::Template::Error (undefined method `omniauth_authorize_path' for #<#<Class:0x102e73080>:0x102e6f840>):
+    15:         Signed in as <%= current_user.email %>.
+    16:         <%= link_to "Sign out", destroy_user_session_path %>
+    17:       <% else %>
+    18: 		<%= link_to "Sign in with Facebook", omniauth_authorize_path(:facebook) %>
+    19: 		<%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Sign in", new_user_session_path %>
+    20:       <% end %>
+    21:     </div>
+  app/views/layouts/application.html.erb:18:in `_app_views_layouts_application_html_erb___2118023122_2171811880_0'
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.8ms)
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (8.9ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed May 11 17:00:32 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (13.7ms)
+Completed   in 22ms
+
+ActionView::Template::Error (undefined method `omniauth_authorize_path' for #<#<Class:0x1032ccf28>:0x1032cacf0>):
+    15:         Signed in as <%= current_user.email %>.
+    16:         <%= link_to "Sign out", destroy_user_session_path %>
+    17:       <% else %>
+    18: 		<%= link_to "Sign in with Facebook", omniauth_authorize_path(:facebook) %>
+    19: 		<%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Sign in", new_user_session_path %>
+    20:       <% end %>
+    21:     </div>
+  app/views/layouts/application.html.erb:18:in `_app_views_layouts_application_html_erb___2118023122_2174102620_0'
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.6ms)
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.6ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed May 11 17:01:39 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (12.7ms)
+Completed   in 21ms
+
+ActionView::Template::Error (undefined method `omniauth_authorize_path' for #<#<Class:0x1032ccf50>:0x1032cad18>):
+    15:         Signed in as <%= current_user.email %>.
+    16:         <%= link_to "Sign out", destroy_user_session_path %>
+    17:       <% else %>
+    18: 		<%= link_to "Sign in with Facebook", omniauth_authorize_path(:facebook) %>
+    19: 		<%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Sign in", new_user_session_path %>
+    20:       <% end %>
+    21:     </div>
+  app/views/layouts/application.html.erb:18:in `_app_views_layouts_application_html_erb___2118023122_2174102640_0'
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.5ms)
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.6ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed May 11 17:01:41 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (87.5ms)
+Completed   in 95ms
+
+ActionView::Template::Error (undefined method `omniauth_authorize_path' for #<#<Class:0x102e7e570>:0x102e773d8>):
+    15:         Signed in as <%= current_user.email %>.
+    16:         <%= link_to "Sign out", destroy_user_session_path %>
+    17:       <% else %>
+    18: 		<%= link_to "Sign in with Facebook", omniauth_authorize_path(:facebook) %>
+    19: 		<%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Sign in", new_user_session_path %>
+    20:       <% end %>
+    21:     </div>
+  app/views/layouts/application.html.erb:18:in `_app_views_layouts_application_html_erb___2118023122_2171827320_0'
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.0ms)
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (8.6ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed May 11 17:01:42 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (27.3ms)
+Completed   in 37ms
+
+ActionView::Template::Error (undefined method `omniauth_authorize_path' for #<#<Class:0x103113d58>:0x103111e90>):
+    15:         Signed in as <%= current_user.email %>.
+    16:         <%= link_to "Sign out", destroy_user_session_path %>
+    17:       <% else %>
+    18: 		<%= link_to "Sign in with Facebook", omniauth_authorize_path(:facebook) %>
+    19: 		<%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Sign in", new_user_session_path %>
+    20:       <% end %>
+    21:     </div>
+  app/views/layouts/application.html.erb:18:in `_app_views_layouts_application_html_erb___2118023122_2173199700_0'
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.3ms)
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed May 11 17:01:59 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (24.2ms)
+Completed 200 OK in 36ms (Views: 35.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at Wed May 11 17:02:01 -0400 2011
+  Processing by Devise::SessionsController#new as HTML
+Rendered devise/shared/_links.erb (1.4ms)
+Rendered devise/sessions/new.html.erb within layouts/application (14.2ms)
+Completed 200 OK in 122ms (Views: 22.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at Wed May 11 17:02:07 -0400 2011
+  Processing by Devise::SessionsController#create as HTML
+  Parameters: {"commit"=>"Sign in", "authenticity_token"=>"Fb2CKHqPXvEiRrTtAokH5KhtZqLytKi4sdwYXXtkxlY=", "utf8"=>"✓", "user"=>{"remember_me"=>"0", "password"=>"[FILTERED]", "email"=>"asdf@asdf.com"}}
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."email" = 'asdf@asdf.com') LIMIT 1
+Completed   in 50ms
+  Processing by Devise::SessionsController#new as HTML
+  Parameters: {"commit"=>"Sign in", "authenticity_token"=>"Fb2CKHqPXvEiRrTtAokH5KhtZqLytKi4sdwYXXtkxlY=", "utf8"=>"✓", "user"=>{"remember_me"=>"0", "password"=>"[FILTERED]", "email"=>"asdf@asdf.com"}}
+Rendered devise/shared/_links.erb (1.4ms)
+Rendered devise/sessions/new.html.erb within layouts/application (11.5ms)
+Completed 200 OK in 107ms (Views: 18.4ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at Wed May 11 17:02:12 -0400 2011
+  Processing by Devise::SessionsController#create as HTML
+  Parameters: {"commit"=>"Sign in", "authenticity_token"=>"Fb2CKHqPXvEiRrTtAokH5KhtZqLytKi4sdwYXXtkxlY=", "utf8"=>"✓", "user"=>{"remember_me"=>"1", "password"=>"[FILTERED]", "email"=>"asdf@asdf.com"}}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."email" = 'asdf@asdf.com') LIMIT 1[0m
+Completed   in 22ms
+  Processing by Devise::SessionsController#new as HTML
+  Parameters: {"commit"=>"Sign in", "authenticity_token"=>"Fb2CKHqPXvEiRrTtAokH5KhtZqLytKi4sdwYXXtkxlY=", "utf8"=>"✓", "user"=>{"remember_me"=>"1", "password"=>"[FILTERED]", "email"=>"asdf@asdf.com"}}
+Rendered devise/shared/_links.erb (1.5ms)
+Rendered devise/sessions/new.html.erb within layouts/application (10.5ms)
+Completed 200 OK in 116ms (Views: 18.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Wed May 11 17:02:14 -0400 2011
+  Processing by Devise::RegistrationsController#new as HTML
+Rendered devise/shared/_links.erb (1.9ms)
+Rendered devise/registrations/new.html.erb within layouts/application (94.5ms)
+Completed 200 OK in 124ms (Views: 103.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at Wed May 11 17:02:20 -0400 2011
+  Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"Fb2CKHqPXvEiRrTtAokH5KhtZqLytKi4sdwYXXtkxlY=", "utf8"=>"✓", "user"=>{"password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]", "email"=>"asdf@asdf.com"}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users"."id" FROM "users" WHERE ("users"."email" = 'asdf@asdf.com') LIMIT 1
+Rendered devise/shared/_links.erb (1.3ms)
+Rendered devise/registrations/new.html.erb within layouts/application (10.5ms)
+Completed 200 OK in 142ms (Views: 18.5ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users" for 127.0.0.1 at Wed May 11 17:02:26 -0400 2011
+  Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"Fb2CKHqPXvEiRrTtAokH5KhtZqLytKi4sdwYXXtkxlY=", "utf8"=>"✓", "user"=>{"password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]", "email"=>"asdf@asdf.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users"."id" FROM "users" WHERE ("users"."email" = 'asdf@asdf.com') LIMIT 1[0m
+  [1m[35mAREL (0.5ms)[0m  INSERT INTO "users" ("sync_token", "remember_token", "deleted", "facebook_id", "email", "current_sign_in_at", "facebook_access_token", "is_active", "encrypted_password", "sign_in_count", "created_by", "first_name", "status", "current_sign_in_ip", "profile_image", "created_at", "remember_created_at", "last_sign_in_ip", "authentication_token", "last_name", "reset_password_token", "last_sign_in_at", "updated_at") VALUES (NULL, NULL, NULL, NULL, 'asdf@asdf.com', NULL, NULL, 't', '$2a$10$/J11TTYRpmIla1SuCyWeEesrJ3Pyr3hw7glMxELsB7nTeX90UNSf.', 0, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "users" SET "current_sign_in_at" = '2011-05-11 21:02:27.147350', "sign_in_count" = 1, "current_sign_in_ip" = '127.0.0.1', "last_sign_in_ip" = '127.0.0.1', "last_sign_in_at" = '2011-05-11 21:02:27.147350', "updated_at" = '2011-05-11 21:02:27.147832' WHERE ("users"."id" = 3)[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 236ms
+
+
+Started GET "/" for 127.0.0.1 at Wed May 11 17:02:27 -0400 2011
+  Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered home/index.html.erb within layouts/application (30.7ms)
+Completed 200 OK in 38ms (Views: 37.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed May 11 17:02:31 -0400 2011
+  Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+Rendered home/index.html.erb within layouts/application (32.5ms)
+Completed 200 OK in 41ms (Views: 40.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed May 11 17:02:32 -0400 2011
+  Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered home/index.html.erb within layouts/application (30.7ms)
+Completed 200 OK in 38ms (Views: 37.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed May 11 17:02:51 -0400 2011
+  Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+Rendered home/index.html.erb within layouts/application (34.4ms)
+Completed 200 OK in 43ms (Views: 41.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at Wed May 11 17:02:53 -0400 2011
+  Processing by Devise::SessionsController#destroy as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Redirected to http://localhost:3000/
+Completed 302 Found in 51ms
+
+
+Started GET "/" for 127.0.0.1 at Wed May 11 17:02:53 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (104.5ms)
+Completed   in 113ms
+
+ActionView::Template::Error (undefined method `omniauth_authorize_path' for #<#<Class:0x102d33580>:0x102d31398>):
+    15:         Signed in as <%= current_user.email %>.
+    16:         <%= link_to "Sign out", destroy_user_session_path %>
+    17:       <% else %>
+    18: 		<%= link_to "Sign in with Facebook", omniauth_authorize_path(:user) %>
+    19: 		<%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Sign in", new_user_session_path %>
+    20:       <% end %>
+    21:     </div>
+  app/views/layouts/application.html.erb:18:in `_app_views_layouts_application_html_erb___2118023122_2171169300_0'
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.9ms)
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (12.5ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed May 11 17:02:55 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (24.7ms)
+Completed   in 32ms
+
+ActionView::Template::Error (undefined method `omniauth_authorize_path' for #<#<Class:0x10302d100>:0x10302a180>):
+    15:         Signed in as <%= current_user.email %>.
+    16:         <%= link_to "Sign out", destroy_user_session_path %>
+    17:       <% else %>
+    18: 		<%= link_to "Sign in with Facebook", omniauth_authorize_path(:user) %>
+    19: 		<%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Sign in", new_user_session_path %>
+    20:       <% end %>
+    21:     </div>
+  app/views/layouts/application.html.erb:18:in `_app_views_layouts_application_html_erb___2118023122_2172726640_0'
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.6ms)
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (8.3ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed May 11 17:14:46 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (12.4ms)
+Completed   in 20ms
+
+ActionView::Template::Error (undefined method `omniauth_authorize_path' for #<#<Class:0x103084a18>:0x103077598>):
+    15:         Signed in as <%= current_user.email %>.
+    16:         <%= link_to "Sign out", destroy_user_session_path %>
+    17:       <% else %>
+    18: 		<%= link_to "Sign in with Facebook", omniauth_authorize_path(:user) %>
+    19: 		<%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Sign in", new_user_session_path %>
+    20:       <% end %>
+    21:     </div>
+  app/views/layouts/application.html.erb:18:in `_app_views_layouts_application_html_erb___2118023122_2172850520_0'
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.2ms)
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (8.5ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed May 11 17:15:40 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (90.8ms)
+Completed 200 OK in 98ms (Views: 97.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/facebook" for 127.0.0.1 at Wed May 11 17:15:45 -0400 2011
+
+ActionController::RoutingError (No route matches "/auth/facebook"):
+  
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/auth/twitter" for 127.0.0.1 at Wed May 11 17:16:02 -0400 2011
+
+ActionController::RoutingError (No route matches "/auth/twitter"):
+  
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed May 11 17:18:16 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 11ms (Views: 10.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth" for 127.0.0.1 at Wed May 11 17:18:25 -0400 2011
+
+ActionController::RoutingError (No route matches "/auth"):
+  
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/auth/twitter" for 127.0.0.1 at Wed May 11 17:18:31 -0400 2011
+
+ActionController::RoutingError (No route matches "/auth/twitter"):
+  
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/auth/facebook" for 127.0.0.1 at Wed May 11 17:18:38 -0400 2011
+
+ActionController::RoutingError (No route matches "/auth/facebook"):
+  
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/auth/twitter" for 127.0.0.1 at Wed May 11 17:18:42 -0400 2011
+
+ActionController::RoutingError (No route matches "/auth/twitter"):
+  
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/auth/twitter" for 127.0.0.1 at Wed May 11 17:24:49 -0400 2011
+
+ActionController::RoutingError (No route matches "/auth/twitter"):
+  
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/auth/facebook" for 127.0.0.1 at Wed May 11 17:24:55 -0400 2011
+
+ActionController::RoutingError (No route matches "/auth/facebook"):
+  
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/auth/facebook" for 127.0.0.1 at Wed May 11 17:26:33 -0400 2011
+
+ActionController::RoutingError (No route matches "/auth/facebook"):
+  
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/auth/facebook" for 127.0.0.1 at Wed May 11 17:27:26 -0400 2011
+
+ActionController::RoutingError (No route matches "/auth/facebook"):
+  
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.1ms)
+
+
+Started GET "/auth/facebook" for 127.0.0.1 at Wed May 11 17:27:59 -0400 2011
+
+
+Started GET "/" for 127.0.0.1 at Wed May 11 17:29:03 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (85.7ms)
+Completed 200 OK in 93ms (Views: 93.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/facebook" for 127.0.0.1 at Wed May 11 17:29:07 -0400 2011
+
+
+Started GET "/auth/facebook/callback?error=invalid_scope&error_description=Unsupported+scope%3A+%27permission%27.+Supported+scopes%3A+ads_management+create_event+create_note+email+export_stream+friends_about_me+friends_activities+friends_birthday+friends_checkins+friends_education_history+friends_events+friends_groups+friends_hometown+friends_interests+friends_likes+friends_location+friends_notes+friends_online_presence+friends_photo_video_tags+friends_photos+friends_relationship_details+friends_relationships+friends_religion_politics+friends_status+friends_videos+friends_website+friends_work_history+manage_friendlists+manage_pages+offline_access+photo_upload+publish_checkins+publish_stream+read_friendlists+read_insights+read_mailbox+read_requests+read_stream+rsvp_event+share_item+sms+status_update+user_about_me+user_activities+user_birthday+user_checkins+user_education_history+user_events+user_groups+user_hometown+user_interests+user_likes+user_location+user_notes+user_online_presence+user_photo_video_tags+user_photos+user_relationship_details+user_relationships+user_religion_politics+user_status+user_videos+user_website+user_work_history+video_upload+xmpp_login" for 127.0.0.1 at Wed May 11 17:29:08 -0400 2011
+
+
+Started GET "/auth/failure?message=invalid_credentials" for 127.0.0.1 at Wed May 11 17:29:08 -0400 2011
+
+ActionController::RoutingError (No route matches "/auth/failure"):
+  
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed May 11 17:29:12 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (88.3ms)
+Completed 200 OK in 96ms (Views: 95.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/facebook" for 127.0.0.1 at Wed May 11 17:29:18 -0400 2011
+
+
+Started GET "/auth/facebook/callback?error=invalid_scope&error_description=Unsupported+scope%3A+%27permission%27.+Supported+scopes%3A+ads_management+create_event+create_note+email+export_stream+friends_about_me+friends_activities+friends_birthday+friends_checkins+friends_education_history+friends_events+friends_groups+friends_hometown+friends_interests+friends_likes+friends_location+friends_notes+friends_online_presence+friends_photo_video_tags+friends_photos+friends_relationship_details+friends_relationships+friends_religion_politics+friends_status+friends_videos+friends_website+friends_work_history+manage_friendlists+manage_pages+offline_access+photo_upload+publish_checkins+publish_stream+read_friendlists+read_insights+read_mailbox+read_requests+read_stream+rsvp_event+share_item+sms+status_update+user_about_me+user_activities+user_birthday+user_checkins+user_education_history+user_events+user_groups+user_hometown+user_interests+user_likes+user_location+user_notes+user_online_presence+user_photo_video_tags+user_photos+user_relationship_details+user_relationships+user_religion_politics+user_status+user_videos+user_website+user_work_history+video_upload+xmpp_login" for 127.0.0.1 at Wed May 11 17:29:19 -0400 2011
+
+
+Started GET "/auth/failure?message=invalid_credentials" for 127.0.0.1 at Wed May 11 17:29:19 -0400 2011
+
+ActionController::RoutingError (No route matches "/auth/failure"):
+  
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed May 11 17:30:48 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 12ms (Views: 11.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/facebook" for 127.0.0.1 at Wed May 11 17:30:55 -0400 2011
+
+
+Started GET "/auth/facebook/callback?code=wRLQDUwl_B7PgR3jW_Y_FQ8_s-MstnKUdf5750ie2eU.eyJpdiI6IjE4NzdhZUZCMFJiXzFUN0NuUHlEMFEifQ.44NPENz4lQSfMBmFnOaWqRGBtYzVJZU4-oZKXaYSH5igs7HMlVdodkgWVP4T2XumRIGZOGs-CkOCGPNp-aizbdQKf0OxQ33zynEJ9sPS1F1JTxN2v9g344WIAI_-dTvt" for 127.0.0.1 at Wed May 11 17:31:09 -0400 2011
+
+ActionController::RoutingError (No route matches "/auth/facebook/callback"):
+  
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to DeviseCreateUsers (20101205182705)
+Migrating to CreateDelayedJobs (20110427215004)
+Migrating to DeviseCreateAdmins (20110511203527)
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.8ms)[0m  [1mCREATE TABLE "admins" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(128) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("admins")
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE UNIQUE INDEX "index_admins_on_email" ON "admins" ("email")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("admins")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_info('index_admins_on_email')[0m
+  [1m[35mSQL (0.2ms)[0m  CREATE UNIQUE INDEX "index_admins_on_reset_password_token" ON "admins" ("reset_password_token")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20110511203527')[0m
+Migrating to CreateAuthentications (20110511213233)
+  [1m[35mSQL (0.5ms)[0m  CREATE TABLE "authentications" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "provider" varchar(255), "uid" varchar(255), "token" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20110511213233')[0m
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("admins")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_info('index_admins_on_reset_password_token')
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_info('index_admins_on_email')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("authentications")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("delayed_jobs")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_info('delayed_jobs_priority')
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_info('index_users_on_reset_password_token')
+
+
+Started GET "/" for 127.0.0.1 at Wed May 11 17:39:00 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 14ms (Views: 13.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/facebook" for 127.0.0.1 at Wed May 11 17:39:01 -0400 2011
+
+
+Started GET "/auth/facebook/callback?code=Mjn16YsIdaaHglLMflDgoAO1Lgg08XIxNttm3HmMs0w.eyJpdiI6ImpHbkloYlBjTUN0eldEclNxTnV5N0EifQ.OFLEDWrFLwtrWOVCCeDvu06E4q3dU_BldjGS7yyIWpf4HnHz3mLX1epfR3Zxs5xl69XDzG8NDD1V-y0hNSCRGnmWg4lqIO4nzue1hF_G0dUQdpI2osCrLOry9BUEN5Sy" for 127.0.0.1 at Wed May 11 17:39:03 -0400 2011
+  Processing by AuthenticationsController#create as HTML
+  Parameters: {"code"=>"Mjn16YsIdaaHglLMflDgoAO1Lgg08XIxNttm3HmMs0w.eyJpdiI6ImpHbkloYlBjTUN0eldEclNxTnV5N0EifQ.OFLEDWrFLwtrWOVCCeDvu06E4q3dU_BldjGS7yyIWpf4HnHz3mLX1epfR3Zxs5xl69XDzG8NDD1V-y0hNSCRGnmWg4lqIO4nzue1hF_G0dUQdpI2osCrLOry9BUEN5Sy", "provider"=>"facebook"}
+Rendered text template (0.0ms)
+Completed 200 OK in 58ms (Views: 57.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/facebook/callback?code=Mjn16YsIdaaHglLMflDgoAO1Lgg08XIxNttm3HmMs0w.eyJpdiI6ImpHbkloYlBjTUN0eldEclNxTnV5N0EifQ.OFLEDWrFLwtrWOVCCeDvu06E4q3dU_BldjGS7yyIWpf4HnHz3mLX1epfR3Zxs5xl69XDzG8NDD1V-y0hNSCRGnmWg4lqIO4nzue1hF_G0dUQdpI2osCrLOry9BUEN5Sy" for 127.0.0.1 at Wed May 11 17:39:35 -0400 2011
+  Processing by AuthenticationsController#create as HTML
+  Parameters: {"code"=>"Mjn16YsIdaaHglLMflDgoAO1Lgg08XIxNttm3HmMs0w.eyJpdiI6ImpHbkloYlBjTUN0eldEclNxTnV5N0EifQ.OFLEDWrFLwtrWOVCCeDvu06E4q3dU_BldjGS7yyIWpf4HnHz3mLX1epfR3Zxs5xl69XDzG8NDD1V-y0hNSCRGnmWg4lqIO4nzue1hF_G0dUQdpI2osCrLOry9BUEN5Sy", "provider"=>"facebook"}
+Rendered text template (0.0ms)
+Completed 200 OK in 4ms (Views: 1.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 11:05:04 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (89.0ms)
+Completed 200 OK in 96ms (Views: 95.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/facebook" for 127.0.0.1 at Thu May 12 11:05:07 -0400 2011
+
+
+Started GET "/auth/facebook/callback?code=CeIOGEnUIFudLtqAuejiRoruob5xJxPKWkobP3zQ13g.eyJpdiI6IjBFUTA1MVFRekw1eUpLaWh6WTVEWXcifQ.paCl6_TmkPA4e7UW9OC3xtzz8aDPBPjGeLSOFVya2lmJK1tpAjKajif6Zzqnpby-mIBoL7X7Cbcw2AFsvHIN5LtLd3rCcmkf3XffL8kSW_LrcG8Eyow8CGw5iIU0xBgx" for 127.0.0.1 at Thu May 12 11:05:08 -0400 2011
+  Processing by AuthenticationsController#create as HTML
+  Parameters: {"code"=>"CeIOGEnUIFudLtqAuejiRoruob5xJxPKWkobP3zQ13g.eyJpdiI6IjBFUTA1MVFRekw1eUpLaWh6WTVEWXcifQ.paCl6_TmkPA4e7UW9OC3xtzz8aDPBPjGeLSOFVya2lmJK1tpAjKajif6Zzqnpby-mIBoL7X7Cbcw2AFsvHIN5LtLd3rCcmkf3XffL8kSW_LrcG8Eyow8CGw5iIU0xBgx", "provider"=>"facebook"}
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  first_name: Brian
+  email: djbwise@yahoo.com
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+extra: 
+  user_hash: 
+    name: Brian Weisenthal
+    username: brian.weisenthal
+    timezone: -4
+    gender: male
+    id: "659477511"
+    birthday: 10/26/1980
+    last_name: Weisenthal
+    updated_time: 2011-05-09T15:49:39+0000
+    verified: true
+    locale: en_US
+    link: http://www.facebook.com/brian.weisenthal
+    email: djbwise@yahoo.com
+    first_name: Brian
+provider: facebook
+Completed   in 11ms
+
+NoMethodError (undefined method `authentications' for nil:NilClass):
+  app/controllers/authentications_controller.rb:10:in `create'
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.8ms)
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (31.6ms)
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 11:10:29 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (79.4ms)
+Completed 200 OK in 87ms (Views: 87.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 11:10:30 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 19ms (Views: 19.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/facebook" for 127.0.0.1 at Thu May 12 11:10:32 -0400 2011
+
+
+Started GET "/auth/facebook/callback?code=svk2DB-FpEuTZ9IWkzzoCkvll3oXNNqu1RY1D0qbdpU.eyJpdiI6IkpxaFk1eVI3QWR6cXo3RzhkdnZkblEifQ.ePgUO-kdf1RyMXCf16z5mtXYPxUptGKjQQcWQxvbKllm6OVAsJefYX404ethjgd6u8Vyb_D5CLHf2xFPX88a8nwJjtJhHhqC5WBsC7JmtWLypQuGtzxNyUnsanRVj-nG" for 127.0.0.1 at Thu May 12 11:10:33 -0400 2011
+  Processing by AuthenticationsController#create as HTML
+  Parameters: {"code"=>"svk2DB-FpEuTZ9IWkzzoCkvll3oXNNqu1RY1D0qbdpU.eyJpdiI6IkpxaFk1eVI3QWR6cXo3RzhkdnZkblEifQ.ePgUO-kdf1RyMXCf16z5mtXYPxUptGKjQQcWQxvbKllm6OVAsJefYX404ethjgd6u8Vyb_D5CLHf2xFPX88a8nwJjtJhHhqC5WBsC7JmtWLypQuGtzxNyUnsanRVj-nG", "provider"=>"facebook"}
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+Completed   in 177ms
+
+NoMethodError (undefined method `find_by_provder_and_uid' for #<Class:0x102dfd880>):
+  app/controllers/authentications_controller.rb:8:in `create'
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.7ms)
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (10.5ms)
+
+
+Started GET "/auth/facebook/callback?code=svk2DB-FpEuTZ9IWkzzoCkvll3oXNNqu1RY1D0qbdpU.eyJpdiI6IkpxaFk1eVI3QWR6cXo3RzhkdnZkblEifQ.ePgUO-kdf1RyMXCf16z5mtXYPxUptGKjQQcWQxvbKllm6OVAsJefYX404ethjgd6u8Vyb_D5CLHf2xFPX88a8nwJjtJhHhqC5WBsC7JmtWLypQuGtzxNyUnsanRVj-nG" for 127.0.0.1 at Thu May 12 11:10:52 -0400 2011
+  Processing by AuthenticationsController#create as HTML
+  Parameters: {"code"=>"svk2DB-FpEuTZ9IWkzzoCkvll3oXNNqu1RY1D0qbdpU.eyJpdiI6IkpxaFk1eVI3QWR6cXo3RzhkdnZkblEifQ.ePgUO-kdf1RyMXCf16z5mtXYPxUptGKjQQcWQxvbKllm6OVAsJefYX404ethjgd6u8Vyb_D5CLHf2xFPX88a8nwJjtJhHhqC5WBsC7JmtWLypQuGtzxNyUnsanRVj-nG", "provider"=>"facebook"}
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAuthentication Load (0.1ms)[0m  [1mSELECT "authentications".* FROM "authentications" WHERE ("authentications"."uid" = '659477511') AND ("authentications"."provider" = 'facebook') LIMIT 1[0m
+Completed   in 67ms
+
+NoMethodError (undefined method `authentications' for nil:NilClass):
+  app/controllers/authentications_controller.rb:13:in `create'
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (7.2ms)
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.9ms)
+
+
+Started GET "/auth/facebook/callback?code=svk2DB-FpEuTZ9IWkzzoCkvll3oXNNqu1RY1D0qbdpU.eyJpdiI6IkpxaFk1eVI3QWR6cXo3RzhkdnZkblEifQ.ePgUO-kdf1RyMXCf16z5mtXYPxUptGKjQQcWQxvbKllm6OVAsJefYX404ethjgd6u8Vyb_D5CLHf2xFPX88a8nwJjtJhHhqC5WBsC7JmtWLypQuGtzxNyUnsanRVj-nG" for 127.0.0.1 at Thu May 12 11:20:17 -0400 2011
+  Processing by AuthenticationsController#create as HTML
+  Parameters: {"code"=>"svk2DB-FpEuTZ9IWkzzoCkvll3oXNNqu1RY1D0qbdpU.eyJpdiI6IkpxaFk1eVI3QWR6cXo3RzhkdnZkblEifQ.ePgUO-kdf1RyMXCf16z5mtXYPxUptGKjQQcWQxvbKllm6OVAsJefYX404ethjgd6u8Vyb_D5CLHf2xFPX88a8nwJjtJhHhqC5WBsC7JmtWLypQuGtzxNyUnsanRVj-nG", "provider"=>"facebook"}
+  [1m[35mAuthentication Load (0.2ms)[0m  SELECT "authentications".* FROM "authentications" WHERE ("authentications"."uid" = '659477511') AND ("authentications"."provider" = 'facebook') LIMIT 1
+Completed   in 27ms
+
+NoMethodError (undefined method `user' for #<User:0x103310ae8>):
+  app/models/user.rb:35:in `apply_omniauth'
+  app/controllers/authentications_controller.rb:18:in `create'
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.5ms)
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (10.3ms)
+
+
+Started GET "/auth/facebook/callback?code=svk2DB-FpEuTZ9IWkzzoCkvll3oXNNqu1RY1D0qbdpU.eyJpdiI6IkpxaFk1eVI3QWR6cXo3RzhkdnZkblEifQ.ePgUO-kdf1RyMXCf16z5mtXYPxUptGKjQQcWQxvbKllm6OVAsJefYX404ethjgd6u8Vyb_D5CLHf2xFPX88a8nwJjtJhHhqC5WBsC7JmtWLypQuGtzxNyUnsanRVj-nG" for 127.0.0.1 at Thu May 12 11:21:00 -0400 2011
+  Processing by AuthenticationsController#create as HTML
+  Parameters: {"code"=>"svk2DB-FpEuTZ9IWkzzoCkvll3oXNNqu1RY1D0qbdpU.eyJpdiI6IkpxaFk1eVI3QWR6cXo3RzhkdnZkblEifQ.ePgUO-kdf1RyMXCf16z5mtXYPxUptGKjQQcWQxvbKllm6OVAsJefYX404ethjgd6u8Vyb_D5CLHf2xFPX88a8nwJjtJhHhqC5WBsC7JmtWLypQuGtzxNyUnsanRVj-nG", "provider"=>"facebook"}
+  [1m[36mAuthentication Load (0.1ms)[0m  [1mSELECT "authentications".* FROM "authentications" WHERE ("authentications"."uid" = '659477511') AND ("authentications"."provider" = 'facebook') LIMIT 1[0m
+  [1m[35mAREL (0.6ms)[0m  INSERT INTO "users" ("first_name", "sync_token", "created_at", "reset_password_token", "deleted", "current_sign_in_at", "last_name", "last_sign_in_at", "facebook_id", "profile_image", "is_active", "email", "remember_created_at", "sign_in_count", "facebook_access_token", "created_by", "status", "last_sign_in_ip", "encrypted_password", "current_sign_in_ip", "authentication_token", "updated_at", "remember_token") VALUES (NULL, NULL, '2011-05-12 15:21:02.279709', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 't', '', NULL, 0, NULL, NULL, 0, NULL, '', NULL, NULL, '2011-05-12 15:21:02.279709', NULL)
+  [1m[36mAuthentication Load (0.1ms)[0m  [1mSELECT "authentications".* FROM "authentications" WHERE ("authentications".user_id = NULL)[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "authentications" ("uid", "created_at", "updated_at", "user_id", "provider", "token") VALUES ('659477511', '2011-05-12 15:21:02.284597', '2011-05-12 15:21:02.284597', 4, 'facebook', NULL)
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE "users" SET "current_sign_in_at" = '2011-05-12 15:21:02.291076', "last_sign_in_at" = '2011-05-12 15:21:02.291076', "sign_in_count" = 1, "last_sign_in_ip" = '127.0.0.1', "current_sign_in_ip" = '127.0.0.1', "updated_at" = '2011-05-12 15:21:02.291438' WHERE ("users"."id" = 4)[0m
+Redirected to http://ratemycommit.9mmedia.com:3000/
+Completed 302 Found in 225ms
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 11:21:02 -0400 2011
+  Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+Rendered home/index.html.erb within layouts/application (33.0ms)
+Completed 200 OK in 43ms (Views: 41.8ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at Thu May 12 11:21:59 -0400 2011
+  Processing by Devise::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1[0m
+Redirected to http://ratemycommit.9mmedia.com:3000/
+Completed 302 Found in 69ms
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 11:21:59 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (18.2ms)
+Completed 200 OK in 28ms (Views: 27.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/auth/facebook" for 127.0.0.1 at Thu May 12 11:22:01 -0400 2011
+
+
+Started GET "/auth/facebook/callback?code=Tg62BVuFqJCSwCmEwAN-fyHrLiHtw5HGmrCN7YN1BNM.eyJpdiI6ImU2ZTFRM1p2dVNpQUM1Q3Y2X2NfRHcifQ.M3UpIGXxDCQLqEcf5nzcZXMNFnYNBLw2aCYSlkt-MW6J_g0oV7W2eR2s3ryyDweueZtIXQeK3R_zEusw4byke_A9Vs1el7-TBesGJyPi754FB_Iz0GEZjQUMldAyhZhb" for 127.0.0.1 at Thu May 12 11:22:04 -0400 2011
+  Processing by AuthenticationsController#create as HTML
+  Parameters: {"code"=>"Tg62BVuFqJCSwCmEwAN-fyHrLiHtw5HGmrCN7YN1BNM.eyJpdiI6ImU2ZTFRM1p2dVNpQUM1Q3Y2X2NfRHcifQ.M3UpIGXxDCQLqEcf5nzcZXMNFnYNBLw2aCYSlkt-MW6J_g0oV7W2eR2s3ryyDweueZtIXQeK3R_zEusw4byke_A9Vs1el7-TBesGJyPi754FB_Iz0GEZjQUMldAyhZhb", "provider"=>"facebook"}
+  [1m[35mAuthentication Load (0.2ms)[0m  SELECT "authentications".* FROM "authentications" WHERE ("authentications"."uid" = '659477511') AND ("authentications"."provider" = 'facebook') LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "users" SET "updated_at" = '2011-05-12 15:22:05.907039', "current_sign_in_at" = '2011-05-12 15:22:05.906400', "sign_in_count" = 2 WHERE ("users"."id" = 4)
+Redirected to http://ratemycommit.9mmedia.com:3000/
+Completed 302 Found in 119ms
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 11:22:05 -0400 2011
+  Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1[0m
+Rendered home/index.html.erb within layouts/application (32.0ms)
+Completed 200 OK in 42ms (Views: 41.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at Thu May 12 11:22:08 -0400 2011
+  Processing by Devise::SessionsController#destroy as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+Redirected to http://ratemycommit.9mmedia.com:3000/
+Completed 302 Found in 119ms
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 11:22:09 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (19.8ms)
+Completed 200 OK in 53ms (Views: 52.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/auth/facebook" for 127.0.0.1 at Thu May 12 11:26:09 -0400 2011
+
+
+Started GET "/auth/facebook/callback?code=k9Xc_sEEiQi2SWAS9ZvwcM3-s8-eMned4YngzEZR4ZQ.eyJpdiI6ImRiandDdzdXbXl5a0lScC1YWkFUX0EifQ.B-2CWAC3B-asbTuvcDQkQshHw0b7K6KtvmEkzz4Th_1OS_PwXQo0eg-CJjOY71GnssDCChjJCS3w1lXl2bxDfTXodCLOSMf3UePhk1Kps3L6---NuvNRs8NbYnRjCQjH" for 127.0.0.1 at Thu May 12 11:26:10 -0400 2011
+  Processing by AuthenticationsController#create as HTML
+  Parameters: {"code"=>"k9Xc_sEEiQi2SWAS9ZvwcM3-s8-eMned4YngzEZR4ZQ.eyJpdiI6ImRiandDdzdXbXl5a0lScC1YWkFUX0EifQ.B-2CWAC3B-asbTuvcDQkQshHw0b7K6KtvmEkzz4Th_1OS_PwXQo0eg-CJjOY71GnssDCChjJCS3w1lXl2bxDfTXodCLOSMf3UePhk1Kps3L6---NuvNRs8NbYnRjCQjH", "provider"=>"facebook"}
+  [1m[36mAuthentication Load (0.1ms)[0m  [1mSELECT "authentications".* FROM "authentications" WHERE ("authentications"."uid" = '659477511') AND ("authentications"."provider" = 'facebook') LIMIT 1[0m
+user_infonameBrian WeisenthalurlsFacebookhttp://www.facebook.com/brian.weisenthalWebsitenicknamebrian.weisenthallast_nameWeisenthalimagehttp://graph.facebook.com/659477511/picture?type=squarefirst_nameBrianemaildjbwise@yahoo.comuid659477511credentialstoken152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74extrauser_hashnameBrian Weisenthalusernamebrian.weisenthaltimezone-4gendermaleid659477511birthday10/26/1980last_nameWeisenthalupdated_time2011-05-09T15:49:39+0000verifiedtruelocaleen_USlinkhttp://www.facebook.com/brian.weisenthalemaildjbwise@yahoo.comfirst_nameBrianproviderfacebook
+Completed   in 29ms
+
+ActiveRecord::UnknownAttributeError (unknown attribute: password):
+  app/models/user.rb:36:in `apply_omniauth'
+  app/controllers/authentications_controller.rb:18:in `create'
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (6.3ms)
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (10.8ms)
+
+
+Started GET "/auth/facebook/callback?code=k9Xc_sEEiQi2SWAS9ZvwcM3-s8-eMned4YngzEZR4ZQ.eyJpdiI6ImRiandDdzdXbXl5a0lScC1YWkFUX0EifQ.B-2CWAC3B-asbTuvcDQkQshHw0b7K6KtvmEkzz4Th_1OS_PwXQo0eg-CJjOY71GnssDCChjJCS3w1lXl2bxDfTXodCLOSMf3UePhk1Kps3L6---NuvNRs8NbYnRjCQjH" for 127.0.0.1 at Thu May 12 11:27:23 -0400 2011
+  Processing by AuthenticationsController#create as HTML
+  Parameters: {"code"=>"k9Xc_sEEiQi2SWAS9ZvwcM3-s8-eMned4YngzEZR4ZQ.eyJpdiI6ImRiandDdzdXbXl5a0lScC1YWkFUX0EifQ.B-2CWAC3B-asbTuvcDQkQshHw0b7K6KtvmEkzz4Th_1OS_PwXQo0eg-CJjOY71GnssDCChjJCS3w1lXl2bxDfTXodCLOSMf3UePhk1Kps3L6---NuvNRs8NbYnRjCQjH", "provider"=>"facebook"}
+  [1m[35mAuthentication Load (0.1ms)[0m  SELECT "authentications".* FROM "authentications" WHERE ("authentications"."uid" = '659477511') AND ("authentications"."provider" = 'facebook') LIMIT 1
+user_infonameBrian WeisenthalurlsFacebookhttp://www.facebook.com/brian.weisenthalWebsitenicknamebrian.weisenthallast_nameWeisenthalimagehttp://graph.facebook.com/659477511/picture?type=squarefirst_nameBrianemaildjbwise@yahoo.comuid659477511credentialstoken152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74extrauser_hashnameBrian Weisenthalusernamebrian.weisenthaltimezone-4gendermaleid659477511birthday10/26/1980last_nameWeisenthalupdated_time2011-05-09T15:49:39+0000verifiedtruelocaleen_USlinkhttp://www.facebook.com/brian.weisenthalemaildjbwise@yahoo.comfirst_nameBrianproviderfacebook
+Completed   in 29ms
+
+ActiveRecord::UnknownAttributeError (unknown attribute: encrypted_password):
+  app/models/user.rb:36:in `apply_omniauth'
+  app/controllers/authentications_controller.rb:18:in `create'
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.8ms)
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (10.1ms)
+
+
+Started GET "/auth/facebook/callback?code=k9Xc_sEEiQi2SWAS9ZvwcM3-s8-eMned4YngzEZR4ZQ.eyJpdiI6ImRiandDdzdXbXl5a0lScC1YWkFUX0EifQ.B-2CWAC3B-asbTuvcDQkQshHw0b7K6KtvmEkzz4Th_1OS_PwXQo0eg-CJjOY71GnssDCChjJCS3w1lXl2bxDfTXodCLOSMf3UePhk1Kps3L6---NuvNRs8NbYnRjCQjH" for 127.0.0.1 at Thu May 12 11:29:03 -0400 2011
+  Processing by AuthenticationsController#create as HTML
+  Parameters: {"code"=>"k9Xc_sEEiQi2SWAS9ZvwcM3-s8-eMned4YngzEZR4ZQ.eyJpdiI6ImRiandDdzdXbXl5a0lScC1YWkFUX0EifQ.B-2CWAC3B-asbTuvcDQkQshHw0b7K6KtvmEkzz4Th_1OS_PwXQo0eg-CJjOY71GnssDCChjJCS3w1lXl2bxDfTXodCLOSMf3UePhk1Kps3L6---NuvNRs8NbYnRjCQjH", "provider"=>"facebook"}
+  [1m[36mAuthentication Load (0.1ms)[0m  [1mSELECT "authentications".* FROM "authentications" WHERE ("authentications"."uid" = '659477511') AND ("authentications"."provider" = 'facebook') LIMIT 1[0m
+user_infonameBrian WeisenthalurlsFacebookhttp://www.facebook.com/brian.weisenthalWebsitenicknamebrian.weisenthallast_nameWeisenthalimagehttp://graph.facebook.com/659477511/picture?type=squarefirst_nameBrianemaildjbwise@yahoo.comuid659477511credentialstoken152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74extrauser_hashnameBrian Weisenthalusernamebrian.weisenthaltimezone-4gendermaleid659477511birthday10/26/1980last_nameWeisenthalupdated_time2011-05-09T15:49:39+0000verifiedtruelocaleen_USlinkhttp://www.facebook.com/brian.weisenthalemaildjbwise@yahoo.comfirst_nameBrianproviderfacebook
+Completed   in 97ms
+
+ActionView::MissingTemplate (Missing template authentications/create with {:locale=>[:en, :en], :handlers=>[:rjs, :builder, :rhtml, :rxml, :erb], :formats=>[:html]} in view paths "/Users/djbwise/Documents/Aptana Studio 3 Workspace/RailsRx/app/views", "/Users/djbwise/Documents/Aptana Studio 3 Workspace/RailsRx/vendor/plugins/protobuf_render/app/views", "/Users/djbwise/Documents/Aptana Studio 3 Workspace/RailsRx/vendor/plugins/acts_as_base_object/app/views", "/Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/devise-1.3.4/app/views"):
+  
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 11:31:09 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (12.6ms)
+Completed 200 OK in 21ms (Views: 20.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/facebook" for 127.0.0.1 at Thu May 12 11:31:11 -0400 2011
+
+
+Started GET "/auth/facebook/callback?code=Xbyiol6D9F1WgRIC9G_Tc-VlzCbLBEp04IdHrL6vdCg.eyJpdiI6Ikk3VnZUTWtCVndqS0V2U0pfMF82YkEifQ.aJLGHi4b_1AI68RC9-M1rZkHX4CDXRUhNwNjiv_d_Z8TS6deozJDhY1u0_WEHYagNiCDZdDrNQGHEBg9h0bk-BiBPeIY8ipBkz6jevzQUz1gc_8GoMBCs_Q_053ct9po" for 127.0.0.1 at Thu May 12 11:31:12 -0400 2011
+  Processing by AuthenticationsController#create as HTML
+  Parameters: {"code"=>"Xbyiol6D9F1WgRIC9G_Tc-VlzCbLBEp04IdHrL6vdCg.eyJpdiI6Ikk3VnZUTWtCVndqS0V2U0pfMF82YkEifQ.aJLGHi4b_1AI68RC9-M1rZkHX4CDXRUhNwNjiv_d_Z8TS6deozJDhY1u0_WEHYagNiCDZdDrNQGHEBg9h0bk-BiBPeIY8ipBkz6jevzQUz1gc_8GoMBCs_Q_053ct9po", "provider"=>"facebook"}
+  [1m[35mAuthentication Load (0.1ms)[0m  SELECT "authentications".* FROM "authentications" WHERE ("authentications"."uid" = '659477511') AND ("authentications"."provider" = 'facebook') LIMIT 1
+user_infonameBrian WeisenthalurlsFacebookhttp://www.facebook.com/brian.weisenthalWebsitenicknamebrian.weisenthallast_nameWeisenthalimagehttp://graph.facebook.com/659477511/picture?type=squarefirst_nameBrianemaildjbwise@yahoo.comuid659477511credentialstoken152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74extrauser_hashnameBrian Weisenthalusernamebrian.weisenthaltimezone-4gendermaleid659477511birthday10/26/1980last_nameWeisenthalupdated_time2011-05-09T15:49:39+0000verifiedtruelocaleen_USlinkhttp://www.facebook.com/brian.weisenthalemaildjbwise@yahoo.comfirst_nameBrianproviderfacebook
+Redirected to http://ratemycommit.9mmedia.com:3000/users/sign_up
+Completed 302 Found in 33ms
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Thu May 12 11:31:14 -0400 2011
+  Processing by Devise::RegistrationsController#new as HTML
+Rendered devise/shared/_links.erb (1.8ms)
+Rendered devise/registrations/new.html.erb within layouts/application (21.4ms)
+Completed 200 OK in 47ms (Views: 31.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 11:32:46 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (12.8ms)
+Completed 200 OK in 21ms (Views: 20.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/facebook" for 127.0.0.1 at Thu May 12 11:32:48 -0400 2011
+
+
+Started GET "/auth/facebook/callback?code=g2moTdQCFALhYnENB555i3qXB5QZzYL_oZlzLUbY9Ac.eyJpdiI6ImpBZkRvdGpReEFDN0FjLVZUUmVibGcifQ.T6bBrnbc18AMfElayVKtgXAcofk1wKld5jjaqYWrAPLzSPjKMylJ2pb1Z9iouJTGSJFunkDh53QTaU1JAXCKVhY9moQTY108jLe09hOFTdkTynD0pUEys-E7wir9Dz1V" for 127.0.0.1 at Thu May 12 11:32:49 -0400 2011
+  Processing by AuthenticationsController#create as HTML
+  Parameters: {"code"=>"g2moTdQCFALhYnENB555i3qXB5QZzYL_oZlzLUbY9Ac.eyJpdiI6ImpBZkRvdGpReEFDN0FjLVZUUmVibGcifQ.T6bBrnbc18AMfElayVKtgXAcofk1wKld5jjaqYWrAPLzSPjKMylJ2pb1Z9iouJTGSJFunkDh53QTaU1JAXCKVhY9moQTY108jLe09hOFTdkTynD0pUEys-E7wir9Dz1V", "provider"=>"facebook"}
+  [1m[36mAuthentication Load (0.1ms)[0m  [1mSELECT "authentications".* FROM "authentications" WHERE ("authentications"."uid" = '659477511') AND ("authentications"."provider" = 'facebook') LIMIT 1[0m
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  first_name: Brian
+  email: djbwise@yahoo.com
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+extra: 
+  user_hash: 
+    name: Brian Weisenthal
+    username: brian.weisenthal
+    timezone: -4
+    gender: male
+    id: "659477511"
+    birthday: 10/26/1980
+    last_name: Weisenthal
+    updated_time: 2011-05-09T15:49:39+0000
+    verified: true
+    locale: en_US
+    link: http://www.facebook.com/brian.weisenthal
+    email: djbwise@yahoo.com
+    first_name: Brian
+provider: facebook
+Redirected to http://ratemycommit.9mmedia.com:3000/users/sign_up
+Completed 302 Found in 36ms
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Thu May 12 11:32:51 -0400 2011
+  Processing by Devise::RegistrationsController#new as HTML
+Rendered devise/shared/_links.erb (1.4ms)
+Rendered devise/registrations/new.html.erb within layouts/application (20.9ms)
+Completed 200 OK in 47ms (Views: 32.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 11:35:38 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 20ms (Views: 19.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/facebook" for 127.0.0.1 at Thu May 12 11:35:41 -0400 2011
+
+
+Started GET "/auth/facebook/callback?code=XtmINiOgzIkHfO6-uzECZjU5j6bR-DuUWVb6M251YwE.eyJpdiI6IlJfTkIxUjVKamJ1ZzZITm9fTEJrYUEifQ.SR_OdpgyBFjuJPCvjVh9kABaPddMrNUWL331dnEe5S-e24Z2V2Lx9RgKU9uOIAE6g5U4JFfEtegiVrfV1s29wA-Kgy670UwbVF17VJGb6hMWW5ctuZBX3EoT-b6LPa-7" for 127.0.0.1 at Thu May 12 11:35:42 -0400 2011
+  Processing by AuthenticationsController#create as HTML
+  Parameters: {"code"=>"XtmINiOgzIkHfO6-uzECZjU5j6bR-DuUWVb6M251YwE.eyJpdiI6IlJfTkIxUjVKamJ1ZzZITm9fTEJrYUEifQ.SR_OdpgyBFjuJPCvjVh9kABaPddMrNUWL331dnEe5S-e24Z2V2Lx9RgKU9uOIAE6g5U4JFfEtegiVrfV1s29wA-Kgy670UwbVF17VJGb6hMWW5ctuZBX3EoT-b6LPa-7", "provider"=>"facebook"}
+  [1m[35mAuthentication Load (0.2ms)[0m  SELECT "authentications".* FROM "authentications" WHERE ("authentications"."uid" = '659477511') AND ("authentications"."provider" = 'facebook') LIMIT 1
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  first_name: Brian
+  email: djbwise@yahoo.com
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+extra: 
+  user_hash: 
+    name: Brian Weisenthal
+    username: brian.weisenthal
+    timezone: -4
+    gender: male
+    id: "659477511"
+    birthday: 10/26/1980
+    last_name: Weisenthal
+    updated_time: 2011-05-09T15:49:39+0000
+    verified: true
+    locale: en_US
+    link: http://www.facebook.com/brian.weisenthal
+    email: djbwise@yahoo.com
+    first_name: Brian
+provider: facebook
+--- !ruby/ActiveRecord:User 
+attributes: 
+  facebook_id: 
+  encrypted_password: ""
+  created_at: 
+  sync_token: 
+  updated_at: 
+  last_sign_in_ip: 
+  last_sign_in_at: 
+  deleted: 
+  created_by: 
+  facebook_access_token: 
+  sign_in_count: 0
+  is_active: true
+  profile_image: 
+  last_name: 
+  authentication_token: 
+  current_sign_in_ip: 
+  remember_token: 
+  reset_password_token: 
+  current_sign_in_at: 
+  remember_created_at: 
+  status: 0
+  first_name: 
+  email: ""
+Redirected to http://ratemycommit.9mmedia.com:3000/users/sign_up
+Completed 302 Found in 109ms
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Thu May 12 11:35:44 -0400 2011
+  Processing by Devise::RegistrationsController#new as HTML
+Rendered devise/shared/_links.erb (2.1ms)
+Rendered devise/registrations/new.html.erb within layouts/application (23.6ms)
+Completed 200 OK in 42ms (Views: 31.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 11:36:57 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (84.3ms)
+Completed 200 OK in 92ms (Views: 91.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/facebook" for 127.0.0.1 at Thu May 12 11:36:59 -0400 2011
+
+
+Started GET "/auth/facebook/callback?code=tOyraySEkWloid3GoELLay24RBWtWsBzLEXHqGPn4iY.eyJpdiI6ImVTcE5zbWxXRVZBdDEyVFFjV0EzRFEifQ.DDeDK83hM-EW8JdJcas5hfoxvlSJ9zi5Wr6FxupXSFSYpMn-MNgtylOW2Qh75qTVTH3aD7ve3JL-sqTSd4aguAm56XaFW-CSWkvhMNM1bWLtOc0gzaOd8FdbcC8RzqPE" for 127.0.0.1 at Thu May 12 11:37:00 -0400 2011
+  Processing by AuthenticationsController#create as HTML
+  Parameters: {"code"=>"tOyraySEkWloid3GoELLay24RBWtWsBzLEXHqGPn4iY.eyJpdiI6ImVTcE5zbWxXRVZBdDEyVFFjV0EzRFEifQ.DDeDK83hM-EW8JdJcas5hfoxvlSJ9zi5Wr6FxupXSFSYpMn-MNgtylOW2Qh75qTVTH3aD7ve3JL-sqTSd4aguAm56XaFW-CSWkvhMNM1bWLtOc0gzaOd8FdbcC8RzqPE", "provider"=>"facebook"}
+  [1m[36mAuthentication Load (0.1ms)[0m  [1mSELECT "authentications".* FROM "authentications" WHERE ("authentications"."uid" = '659477511') AND ("authentications"."provider" = 'facebook') LIMIT 1[0m
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  first_name: Brian
+  email: djbwise@yahoo.com
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+extra: 
+  user_hash: 
+    name: Brian Weisenthal
+    username: brian.weisenthal
+    timezone: -4
+    gender: male
+    id: "659477511"
+    birthday: 10/26/1980
+    last_name: Weisenthal
+    updated_time: 2011-05-09T15:49:39+0000
+    verified: true
+    locale: en_US
+    link: http://www.facebook.com/brian.weisenthal
+    email: djbwise@yahoo.com
+    first_name: Brian
+provider: facebook
+--- !ruby/ActiveRecord:User 
+attributes: 
+  facebook_id: 
+  encrypted_password: $2a$10$NUWEIDK3.eF8w/.1BfFfoe4OTB6lphNo52zPPIZWvNOGcFH60nf4a
+  created_at: 
+  sync_token: 
+  updated_at: 
+  last_sign_in_ip: 
+  last_sign_in_at: 
+  deleted: 
+  created_by: 
+  facebook_access_token: 
+  sign_in_count: 0
+  is_active: true
+  profile_image: 
+  last_name: 
+  authentication_token: 
+  current_sign_in_ip: 
+  remember_token: 
+  reset_password_token: 
+  current_sign_in_at: 
+  remember_created_at: 
+  status: 0
+  first_name: 
+  email: djbwise@yahoo.com
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users"."id" FROM "users" WHERE ("users"."email" = 'djbwise@yahoo.com') LIMIT 1
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "users" ("status", "current_sign_in_at", "updated_at", "facebook_id", "remember_created_at", "created_at", "is_active", "sync_token", "encrypted_password", "remember_token", "last_name", "facebook_access_token", "reset_password_token", "email", "authentication_token", "deleted", "last_sign_in_at", "created_by", "current_sign_in_ip", "profile_image", "last_sign_in_ip", "sign_in_count", "first_name") VALUES (0, NULL, '2011-05-12 15:37:02.566604', NULL, NULL, '2011-05-12 15:37:02.566604', 't', NULL, '$2a$10$NUWEIDK3.eF8w/.1BfFfoe4OTB6lphNo52zPPIZWvNOGcFH60nf4a', NULL, NULL, NULL, NULL, 'djbwise@yahoo.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL)[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "authentications" ("user_id", "uid", "updated_at", "created_at", "token", "provider") VALUES (5, '659477511', '2011-05-12 15:37:02.568867', '2011-05-12 15:37:02.568867', '152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74', 'facebook')
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE "users" SET "current_sign_in_at" = '2011-05-12 15:37:02.611308', "updated_at" = '2011-05-12 15:37:02.611981', "last_sign_in_at" = '2011-05-12 15:37:02.611308', "current_sign_in_ip" = '127.0.0.1', "last_sign_in_ip" = '127.0.0.1', "sign_in_count" = 1 WHERE ("users"."id" = 5)[0m
+Redirected to http://ratemycommit.9mmedia.com:3000/
+Completed 302 Found in 171ms
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 11:37:02 -0400 2011
+  Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 5) LIMIT 1
+Rendered home/index.html.erb within layouts/application (118.7ms)
+Completed 200 OK in 127ms (Views: 126.3ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at Thu May 12 11:37:32 -0400 2011
+  Processing by Devise::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 5) LIMIT 1[0m
+Redirected to http://ratemycommit.9mmedia.com:3000/
+Completed 302 Found in 39ms
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 11:37:32 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (14.1ms)
+Completed 200 OK in 23ms (Views: 23.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 11:37:36 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (12.2ms)
+Completed 200 OK in 19ms (Views: 18.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/facebook" for 127.0.0.1 at Thu May 12 11:37:38 -0400 2011
+
+
+Started GET "/auth/facebook/callback?code=te9SC_DVIVjyXXI88swBdibMHch6Sk3bdwg3c1D8VQ8.eyJpdiI6ImJjZTRGTWxsQzBlc0dBMEV0NkFOVFEifQ.MiPHP_18ub8lWtfo4pgZEtn4FveUAvAxGmRSvmeWSPBWoQ4aogU5JZjq-xvz-Jpu6VEB9LVOfUvOdNWa2v4xsTVD4y1gxjkZ07gJ4rQx8RkxCDXheNjPlQQ17SvUzoiW" for 127.0.0.1 at Thu May 12 11:37:38 -0400 2011
+  Processing by AuthenticationsController#create as HTML
+  Parameters: {"code"=>"te9SC_DVIVjyXXI88swBdibMHch6Sk3bdwg3c1D8VQ8.eyJpdiI6ImJjZTRGTWxsQzBlc0dBMEV0NkFOVFEifQ.MiPHP_18ub8lWtfo4pgZEtn4FveUAvAxGmRSvmeWSPBWoQ4aogU5JZjq-xvz-Jpu6VEB9LVOfUvOdNWa2v4xsTVD4y1gxjkZ07gJ4rQx8RkxCDXheNjPlQQ17SvUzoiW", "provider"=>"facebook"}
+  [1m[35mAuthentication Load (0.2ms)[0m  SELECT "authentications".* FROM "authentications" WHERE ("authentications"."uid" = '659477511') AND ("authentications"."provider" = 'facebook') LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 5) LIMIT 1[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "users" SET "updated_at" = '2011-05-12 15:37:40.725044', "current_sign_in_at" = '2011-05-12 15:37:40.724428', "sign_in_count" = 2 WHERE ("users"."id" = 5)
+Redirected to http://ratemycommit.9mmedia.com:3000/
+Completed 302 Found in 147ms
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 11:37:40 -0400 2011
+  Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 5) LIMIT 1[0m
+Rendered home/index.html.erb within layouts/application (26.2ms)
+Completed 200 OK in 34ms (Views: 33.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 12:05:36 -0400 2011
+  Processing by HomeController#index as HTML
+  [1m[36mSQL (1.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 5) LIMIT 1
+Rendered home/index.html.erb within layouts/application (43.7ms)
+Completed 200 OK in 51ms (Views: 49.5ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at Thu May 12 12:05:38 -0400 2011
+  Processing by Devise::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 5) LIMIT 1[0m
+Redirected to http://ratemycommit.9mmedia.com:3000/
+Completed 302 Found in 79ms
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 12:05:38 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (102.4ms)
+Completed 200 OK in 113ms (Views: 112.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/auth/facebook" for 127.0.0.1 at Thu May 12 12:06:40 -0400 2011
+
+
+Started GET "/auth/facebook/callback?code=XYQ04qDtVS5I62jROqyJYGoZ-BpcDo1mIaBhdP2kGZo.eyJpdiI6IjdyU0xnNDZRNjZvZ1RJbl82MEpaRncifQ.-Qe-RXUL3tu3L1pvoLN2jC61XMbXGY02pRlUVKsxYQgbR8c2HrXuZZbqwn0DHnzRzSq04N_FIunpH8t0RIUrBCoDnkEOkYd8t-l7gMD3w_Gjm3PeoRE_koi7nvtf2l5v" for 127.0.0.1 at Thu May 12 12:06:41 -0400 2011
+  Processing by AuthenticationsController#create as HTML
+  Parameters: {"code"=>"XYQ04qDtVS5I62jROqyJYGoZ-BpcDo1mIaBhdP2kGZo.eyJpdiI6IjdyU0xnNDZRNjZvZ1RJbl82MEpaRncifQ.-Qe-RXUL3tu3L1pvoLN2jC61XMbXGY02pRlUVKsxYQgbR8c2HrXuZZbqwn0DHnzRzSq04N_FIunpH8t0RIUrBCoDnkEOkYd8t-l7gMD3w_Gjm3PeoRE_koi7nvtf2l5v", "provider"=>"facebook"}
+  [1m[35mAuthentication Load (0.2ms)[0m  SELECT "authentications".* FROM "authentications" WHERE ("authentications"."uid" = '659477511') AND ("authentications"."provider" = 'facebook') LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 5) LIMIT 1[0m
+  [1m[35mAREL (0.5ms)[0m  UPDATE "users" SET "current_sign_in_at" = '2011-05-12 16:06:43.536739', "updated_at" = '2011-05-12 16:06:43.537343', "sign_in_count" = 3, "last_sign_in_at" = '2011-05-12 15:37:40.724428' WHERE ("users"."id" = 5)
+Redirected to http://ratemycommit.9mmedia.com:3000/
+Completed 302 Found in 108ms
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 12:06:43 -0400 2011
+  Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 5) LIMIT 1[0m
+Rendered home/index.html.erb within layouts/application (111.8ms)
+Completed 200 OK in 121ms (Views: 120.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at Thu May 12 12:13:42 -0400 2011
+  Processing by Devise::SessionsController#destroy as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 5) LIMIT 1
+Redirected to http://ratemycommit.9mmedia.com:3000/
+Completed 302 Found in 90ms
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 12:13:42 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (12.2ms)
+Completed 200 OK in 20ms (Views: 19.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 12:14:02 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (12.6ms)
+Completed 200 OK in 20ms (Views: 19.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/facebook" for 127.0.0.1 at Thu May 12 12:14:04 -0400 2011
+
+
+Started GET "/auth/facebook/callback?code=tm10HT1JeMvybZaQZZRGFQti5FEEJX17oLEwMqQcfmg.eyJpdiI6ImtRQ1F0RmZHS2IyR05LUGFwN0t4aFEifQ.5JAqfIXV7uycYR1mfK9QSO9_AuZAhmVVsZla_C4yKi4M6wQz-7Ss2ohyezMGfBTCZMozMv0kDRjwU4MfJSwm6kxFclLY4jnRQ1XRWNcbx3OfquWBRpcGmob8q3V84RA7" for 127.0.0.1 at Thu May 12 12:14:05 -0400 2011
+  Processing by AuthenticationsController#create as HTML
+  Parameters: {"code"=>"tm10HT1JeMvybZaQZZRGFQti5FEEJX17oLEwMqQcfmg.eyJpdiI6ImtRQ1F0RmZHS2IyR05LUGFwN0t4aFEifQ.5JAqfIXV7uycYR1mfK9QSO9_AuZAhmVVsZla_C4yKi4M6wQz-7Ss2ohyezMGfBTCZMozMv0kDRjwU4MfJSwm6kxFclLY4jnRQ1XRWNcbx3OfquWBRpcGmob8q3V84RA7", "provider"=>"facebook"}
+  [1m[36mAuthentication Load (0.1ms)[0m  [1mSELECT "authentications".* FROM "authentications" WHERE ("authentications"."uid" = '659477511') AND ("authentications"."provider" = 'facebook') LIMIT 1[0m
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  first_name: Brian
+  email: djbwise@yahoo.com
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+extra: 
+  user_hash: 
+    name: Brian Weisenthal
+    username: brian.weisenthal
+    timezone: -4
+    gender: male
+    id: "659477511"
+    birthday: 10/26/1980
+    last_name: Weisenthal
+    updated_time: 2011-05-09T15:49:39+0000
+    verified: true
+    locale: en_US
+    link: http://www.facebook.com/brian.weisenthal
+    email: djbwise@yahoo.com
+    first_name: Brian
+provider: facebook
+--- !ruby/ActiveRecord:User 
+attributes: 
+  facebook_id: 
+  encrypted_password: $2a$10$Bq6tGmo7lZQdeBq1g4zkWe0mXGeOY5Vf7s1m2YPelhdhJGF.6xoEe
+  created_at: 
+  sync_token: 
+  updated_at: 
+  last_sign_in_ip: 
+  last_sign_in_at: 
+  deleted: 
+  created_by: 
+  facebook_access_token: 
+  sign_in_count: 0
+  is_active: true
+  profile_image: 
+  last_name: 
+  authentication_token: 
+  current_sign_in_ip: 
+  remember_token: 
+  reset_password_token: 
+  current_sign_in_at: 
+  remember_created_at: 
+  status: 0
+  first_name: 
+  email: ""
+Redirected to http://ratemycommit.9mmedia.com:3000/users/sign_up
+Completed 302 Found in 115ms
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Thu May 12 12:14:08 -0400 2011
+  Processing by RegistrationsController#new as HTML
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  email: djbwise@yahoo.com
+  first_name: Brian
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+provider: facebook
+Completed   in 212ms
+
+ActionView::MissingTemplate (Missing template registrations/new with {:locale=>[:en, :en], :formats=>[:html], :handlers=>[:builder, :rjs, :rhtml, :erb, :rxml]} in view paths "/Users/djbwise/Documents/Aptana Studio 3 Workspace/RailsRx/app/views", "/Users/djbwise/Documents/Aptana Studio 3 Workspace/RailsRx/vendor/plugins/protobuf_render/app/views", "/Users/djbwise/Documents/Aptana Studio 3 Workspace/RailsRx/vendor/plugins/acts_as_base_object/app/views", "/Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/devise-1.3.4/app/views"):
+  
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (0.6ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Thu May 12 12:17:10 -0400 2011
+  Processing by RegistrationsController#new as HTML
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  email: djbwise@yahoo.com
+  first_name: Brian
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+provider: facebook
+Completed   in 181ms
+
+ActionView::MissingTemplate (Missing template registrations/new with {:locale=>[:en, :en], :formats=>[:html], :handlers=>[:builder, :rjs, :rhtml, :erb, :rxml]} in view paths "/Users/djbwise/Documents/Aptana Studio 3 Workspace/RailsRx/app/views", "/Users/djbwise/Documents/Aptana Studio 3 Workspace/RailsRx/vendor/plugins/protobuf_render/app/views", "/Users/djbwise/Documents/Aptana Studio 3 Workspace/RailsRx/vendor/plugins/acts_as_base_object/app/views", "/Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/devise-1.3.4/app/views"):
+  
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 12:17:14 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (13.2ms)
+Completed 200 OK in 20ms (Views: 19.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/facebook" for 127.0.0.1 at Thu May 12 12:17:17 -0400 2011
+
+
+Started GET "/auth/facebook/callback?code=TVu2EkGoMPf43CNZ_aI7djWxH2mwiYN7HXh59M4UsHY.eyJpdiI6IjVmQTl0ZkgyQVRfYXgyaTM3T3dITXcifQ.VTVXUMQm4-yuuzoFGDAkXMGMBOpTr_KqGJAPdml1AVeCj9Z5DCH_NhXmAYjESOOk51nwatbFvRy4zH3u5W1TuXn05SrPR7QLNxeHl5A-JDdKrSdTg109DK163jYLoha4" for 127.0.0.1 at Thu May 12 12:17:18 -0400 2011
+  Processing by AuthenticationsController#create as HTML
+  Parameters: {"code"=>"TVu2EkGoMPf43CNZ_aI7djWxH2mwiYN7HXh59M4UsHY.eyJpdiI6IjVmQTl0ZkgyQVRfYXgyaTM3T3dITXcifQ.VTVXUMQm4-yuuzoFGDAkXMGMBOpTr_KqGJAPdml1AVeCj9Z5DCH_NhXmAYjESOOk51nwatbFvRy4zH3u5W1TuXn05SrPR7QLNxeHl5A-JDdKrSdTg109DK163jYLoha4", "provider"=>"facebook"}
+  [1m[35mAuthentication Load (0.1ms)[0m  SELECT "authentications".* FROM "authentications" WHERE ("authentications"."uid" = '659477511') AND ("authentications"."provider" = 'facebook') LIMIT 1
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  first_name: Brian
+  email: djbwise@yahoo.com
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+extra: 
+  user_hash: 
+    name: Brian Weisenthal
+    username: brian.weisenthal
+    timezone: -4
+    gender: male
+    id: "659477511"
+    birthday: 10/26/1980
+    last_name: Weisenthal
+    updated_time: 2011-05-09T15:49:39+0000
+    verified: true
+    locale: en_US
+    link: http://www.facebook.com/brian.weisenthal
+    email: djbwise@yahoo.com
+    first_name: Brian
+provider: facebook
+--- !ruby/ActiveRecord:User 
+attributes: 
+  facebook_id: 
+  encrypted_password: $2a$10$x56Pw7MKPS7yvl6cdV/Klua35C81em1XaUwNmLItmG8AEuXPjWS36
+  created_at: 
+  sync_token: 
+  updated_at: 
+  last_sign_in_ip: 
+  last_sign_in_at: 
+  deleted: 
+  created_by: 
+  facebook_access_token: 
+  sign_in_count: 0
+  is_active: true
+  profile_image: 
+  last_name: 
+  authentication_token: 
+  current_sign_in_ip: 
+  remember_token: 
+  reset_password_token: 
+  current_sign_in_at: 
+  remember_created_at: 
+  status: 0
+  first_name: 
+  email: ""
+new reg>>
+Redirected to http://ratemycommit.9mmedia.com:3000/users/sign_up
+Completed 302 Found in 185ms
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Thu May 12 12:17:20 -0400 2011
+  Processing by RegistrationsController#new as HTML
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  email: djbwise@yahoo.com
+  first_name: Brian
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+provider: facebook
+Completed   in 128ms
+
+ActionView::MissingTemplate (Missing template registrations/new with {:locale=>[:en, :en], :formats=>[:html], :handlers=>[:builder, :rjs, :rhtml, :erb, :rxml]} in view paths "/Users/djbwise/Documents/Aptana Studio 3 Workspace/RailsRx/app/views", "/Users/djbwise/Documents/Aptana Studio 3 Workspace/RailsRx/vendor/plugins/protobuf_render/app/views", "/Users/djbwise/Documents/Aptana Studio 3 Workspace/RailsRx/vendor/plugins/acts_as_base_object/app/views", "/Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/devise-1.3.4/app/views"):
+  
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (0.6ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Thu May 12 12:18:21 -0400 2011
+  Processing by RegistrationsController#new as HTML
+Completed   in 31ms
+
+ActionView::MissingTemplate (Missing template registrations/new with {:locale=>[:en, :en], :formats=>[:html], :handlers=>[:builder, :rjs, :rhtml, :erb, :rxml]} in view paths "/Users/djbwise/Documents/Aptana Studio 3 Workspace/RailsRx/app/views", "/Users/djbwise/Documents/Aptana Studio 3 Workspace/RailsRx/vendor/plugins/protobuf_render/app/views", "/Users/djbwise/Documents/Aptana Studio 3 Workspace/RailsRx/vendor/plugins/acts_as_base_object/app/views", "/Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/devise-1.3.4/app/views"):
+  
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 12:18:33 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (13.2ms)
+Completed 200 OK in 21ms (Views: 20.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Thu May 12 12:18:34 -0400 2011
+  Processing by RegistrationsController#new as HTML
+Completed   in 29ms
+
+ActionView::MissingTemplate (Missing template registrations/new with {:locale=>[:en, :en], :formats=>[:html], :handlers=>[:builder, :rjs, :rhtml, :erb, :rxml]} in view paths "/Users/djbwise/Documents/Aptana Studio 3 Workspace/RailsRx/app/views", "/Users/djbwise/Documents/Aptana Studio 3 Workspace/RailsRx/vendor/plugins/protobuf_render/app/views", "/Users/djbwise/Documents/Aptana Studio 3 Workspace/RailsRx/vendor/plugins/acts_as_base_object/app/views", "/Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/devise-1.3.4/app/views"):
+  
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (0.6ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at Thu May 12 12:18:41 -0400 2011
+  Processing by Devise::SessionsController#new as HTML
+Rendered devise/shared/_links.erb (1.7ms)
+Rendered devise/sessions/new.html.erb within layouts/application (12.7ms)
+Completed 200 OK in 49ms (Views: 22.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Thu May 12 12:18:43 -0400 2011
+  Processing by RegistrationsController#new as HTML
+Completed   in 30ms
+
+ActionView::MissingTemplate (Missing template registrations/new with {:locale=>[:en, :en], :formats=>[:html], :handlers=>[:builder, :rjs, :rhtml, :erb, :rxml]} in view paths "/Users/djbwise/Documents/Aptana Studio 3 Workspace/RailsRx/app/views", "/Users/djbwise/Documents/Aptana Studio 3 Workspace/RailsRx/vendor/plugins/protobuf_render/app/views", "/Users/djbwise/Documents/Aptana Studio 3 Workspace/RailsRx/vendor/plugins/acts_as_base_object/app/views", "/Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/devise-1.3.4/app/views"):
+  
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (0.6ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Thu May 12 12:18:54 -0400 2011
+  Processing by RegistrationsController#new as HTML
+Completed   in 23ms
+
+ActionView::MissingTemplate (Missing template registrations/new with {:locale=>[:en, :en], :formats=>[:html], :handlers=>[:builder, :rjs, :rhtml, :erb, :rxml]} in view paths "/Users/djbwise/Documents/Aptana Studio 3 Workspace/RailsRx/app/views", "/Users/djbwise/Documents/Aptana Studio 3 Workspace/RailsRx/vendor/plugins/protobuf_render/app/views", "/Users/djbwise/Documents/Aptana Studio 3 Workspace/RailsRx/vendor/plugins/acts_as_base_object/app/views", "/Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/devise-1.3.4/app/views"):
+  
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (0.5ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Thu May 12 12:19:55 -0400 2011
+  Processing by RegistrationsController#new as HTML
+Rendered devise/shared/_links.erb (1.6ms)
+Rendered registrations/new.html.erb within layouts/application (18.9ms)
+Completed 200 OK in 41ms (Views: 30.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Thu May 12 12:20:00 -0400 2011
+  Processing by RegistrationsController#new as HTML
+Rendered devise/shared/_links.erb (2.3ms)
+Rendered registrations/new.html.erb within layouts/application (25.4ms)
+Completed 200 OK in 131ms (Views: 38.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at Thu May 12 12:20:01 -0400 2011
+  Processing by Devise::SessionsController#new as HTML
+Rendered devise/shared/_links.erb (2.0ms)
+Rendered devise/sessions/new.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 50ms (Views: 23.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Thu May 12 12:20:02 -0400 2011
+  Processing by RegistrationsController#new as HTML
+Rendered devise/shared/_links.erb (2.2ms)
+Rendered registrations/new.html.erb within layouts/application (26.4ms)
+Completed 200 OK in 137ms (Views: 39.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/auth/facebook" for 127.0.0.1 at Thu May 12 12:20:04 -0400 2011
+
+ActionController::RoutingError (No route matches "/users/auth/facebook"):
+  
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 12:20:12 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (12.3ms)
+Completed 200 OK in 19ms (Views: 19.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/facebook" for 127.0.0.1 at Thu May 12 12:20:15 -0400 2011
+
+
+Started GET "/auth/facebook/callback?code=ZaO0wQ6XR38zlrTif8mbRuv6kUXrnd7A7L4kl45fQhs.eyJpdiI6ImZPdGhBeGp1OFQweWFtZjE4a09lYVEifQ.2z_KN1aiCEyE6cDSAEukZ0pfTV_352b9omDKZy38b67X4SB_52qJYIh4gdjNiSi-mxK_FfdQ2wQezciAT6rAp4Jn7JlrlEnnSSnbSDR_eTspfSLSPBYw8s9KuUsVrm_w" for 127.0.0.1 at Thu May 12 12:20:17 -0400 2011
+  Processing by AuthenticationsController#create as HTML
+  Parameters: {"code"=>"ZaO0wQ6XR38zlrTif8mbRuv6kUXrnd7A7L4kl45fQhs.eyJpdiI6ImZPdGhBeGp1OFQweWFtZjE4a09lYVEifQ.2z_KN1aiCEyE6cDSAEukZ0pfTV_352b9omDKZy38b67X4SB_52qJYIh4gdjNiSi-mxK_FfdQ2wQezciAT6rAp4Jn7JlrlEnnSSnbSDR_eTspfSLSPBYw8s9KuUsVrm_w", "provider"=>"facebook"}
+  [1m[36mAuthentication Load (0.1ms)[0m  [1mSELECT "authentications".* FROM "authentications" WHERE ("authentications"."uid" = '659477511') AND ("authentications"."provider" = 'facebook') LIMIT 1[0m
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  first_name: Brian
+  email: djbwise@yahoo.com
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+extra: 
+  user_hash: 
+    name: Brian Weisenthal
+    username: brian.weisenthal
+    timezone: -4
+    gender: male
+    id: "659477511"
+    birthday: 10/26/1980
+    last_name: Weisenthal
+    updated_time: 2011-05-09T15:49:39+0000
+    verified: true
+    locale: en_US
+    link: http://www.facebook.com/brian.weisenthal
+    email: djbwise@yahoo.com
+    first_name: Brian
+provider: facebook
+--- !ruby/ActiveRecord:User 
+attributes: 
+  facebook_id: 
+  encrypted_password: $2a$10$x3U4o/cNYmPGcQNo4NPP/u0rqz3K1QNUt08OiupkMKwH.uGTL8cpW
+  created_at: 
+  sync_token: 
+  updated_at: 
+  last_sign_in_ip: 
+  last_sign_in_at: 
+  deleted: 
+  created_by: 
+  facebook_access_token: 
+  sign_in_count: 0
+  is_active: true
+  profile_image: 
+  last_name: 
+  authentication_token: 
+  current_sign_in_ip: 
+  remember_token: 
+  reset_password_token: 
+  current_sign_in_at: 
+  remember_created_at: 
+  status: 0
+  first_name: 
+  email: ""
+new reg>>
+Redirected to http://ratemycommit.9mmedia.com:3000/users/sign_up
+Completed 302 Found in 192ms
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Thu May 12 12:20:19 -0400 2011
+  Processing by RegistrationsController#new as HTML
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  email: djbwise@yahoo.com
+  first_name: Brian
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+provider: facebook
+Rendered devise/shared/_links.erb (1.3ms)
+Rendered registrations/new.html.erb within layouts/application (9.9ms)
+Completed 200 OK in 143ms (Views: 23.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Thu May 12 12:22:22 -0400 2011
+  Processing by RegistrationsController#new as HTML
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  email: djbwise@yahoo.com
+  first_name: Brian
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+provider: facebook
+Rendered devise/shared/_links.erb (1.5ms)
+Rendered registrations/new.html.erb within layouts/application (14.7ms)
+Completed 200 OK in 134ms (Views: 24.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Thu May 12 12:22:26 -0400 2011
+  Processing by RegistrationsController#new as HTML
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  first_name: Brian
+  email: djbwise@yahoo.com
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+provider: facebook
+Rendered devise/shared/_links.erb (1.5ms)
+Rendered registrations/new.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 128ms (Views: 19.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 12:22:27 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (16.5ms)
+Completed 200 OK in 25ms (Views: 24.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/facebook" for 127.0.0.1 at Thu May 12 12:24:35 -0400 2011
+
+
+Started GET "/auth/facebook/callback?code=uud8nNeSE6q7ASIsG1PwLCfw0515IoPglciMczmzL1Y.eyJpdiI6ImUyWVBOd3V5TzhleDhva0JPVmFTMWcifQ.ujw1wOod9SyTK_gYGqlFAa-qrtDMXsNloeRphaObdBYtRDtvmYSpKiWgrESXhZbXUsv6mi0m6zdTvBIHjoufHc0TWwjgRHvKBBJAwuNLYcKa75eDl79S-cgydek1CaY6" for 127.0.0.1 at Thu May 12 12:24:37 -0400 2011
+  Processing by AuthenticationsController#create as HTML
+  Parameters: {"code"=>"uud8nNeSE6q7ASIsG1PwLCfw0515IoPglciMczmzL1Y.eyJpdiI6ImUyWVBOd3V5TzhleDhva0JPVmFTMWcifQ.ujw1wOod9SyTK_gYGqlFAa-qrtDMXsNloeRphaObdBYtRDtvmYSpKiWgrESXhZbXUsv6mi0m6zdTvBIHjoufHc0TWwjgRHvKBBJAwuNLYcKa75eDl79S-cgydek1CaY6", "provider"=>"facebook"}
+  [1m[35mAuthentication Load (0.1ms)[0m  SELECT "authentications".* FROM "authentications" WHERE ("authentications"."uid" = '659477511') AND ("authentications"."provider" = 'facebook') LIMIT 1
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  first_name: Brian
+  email: djbwise@yahoo.com
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+extra: 
+  user_hash: 
+    name: Brian Weisenthal
+    username: brian.weisenthal
+    timezone: -4
+    gender: male
+    id: "659477511"
+    birthday: 10/26/1980
+    last_name: Weisenthal
+    updated_time: 2011-05-09T15:49:39+0000
+    verified: true
+    locale: en_US
+    link: http://www.facebook.com/brian.weisenthal
+    email: djbwise@yahoo.com
+    first_name: Brian
+provider: facebook
+--- !ruby/ActiveRecord:User 
+attributes: 
+  facebook_id: 
+  encrypted_password: $2a$10$nDgNmrI/gsEc1w/wJwKBAOA69fzgL39xptV5dZJO5A.mfUCnNvEXK
+  created_at: 
+  sync_token: 
+  updated_at: 
+  last_sign_in_ip: 
+  last_sign_in_at: 
+  deleted: 
+  created_by: 
+  facebook_access_token: 
+  sign_in_count: 0
+  is_active: true
+  profile_image: 
+  last_name: 
+  authentication_token: 
+  current_sign_in_ip: 
+  remember_token: 
+  reset_password_token: 
+  current_sign_in_at: 
+  remember_created_at: 
+  status: 0
+  first_name: 
+  email: ""
+new reg>>
+Redirected to http://ratemycommit.9mmedia.com:3000/users/sign_up
+Completed 302 Found in 117ms
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Thu May 12 12:24:38 -0400 2011
+  Processing by RegistrationsController#new as HTML
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  email: djbwise@yahoo.com
+  first_name: Brian
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+provider: facebook
+Completed   in 112ms
+
+TypeError (can't convert true into String):
+  app/controllers/registrations_controller.rb:7:in `+'
+  app/controllers/registrations_controller.rb:7:in `build_resource'
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (6.2ms)
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (66.1ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Thu May 12 12:24:55 -0400 2011
+  Processing by RegistrationsController#new as HTML
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  email: djbwise@yahoo.com
+  first_name: Brian
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+provider: facebook
+password required? : yes 
+Rendered devise/shared/_links.erb (1.8ms)
+Rendered registrations/new.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 200ms (Views: 20.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Thu May 12 12:28:10 -0400 2011
+  Processing by RegistrationsController#new as HTML
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  first_name: Brian
+  email: djbwise@yahoo.com
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+provider: facebook
+password required? : yes 
+Rendered devise/shared/_links.erb (1.3ms)
+Rendered registrations/new.html.erb within layouts/application (10.4ms)
+Completed 200 OK in 136ms (Views: 20.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 12:28:59 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 13ms (Views: 12.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/facebook" for 127.0.0.1 at Thu May 12 12:29:01 -0400 2011
+
+
+Started GET "/auth/facebook/callback?code=maVr3PLvqYzyrNaWCFbb2pr5wZknKnv4XfaYy-7kArc.eyJpdiI6IjNLbExBamtSOU9hZGxnVjlnYnUwdncifQ.RqTHi9cYnLqfffs9WT9So6sfLFhan_iM6337cv_JtipXC_TITN9BRdYGuyxqy6r7XOyudVuTiPBLcX-Z1j2hQkMuN7sJmNT-IRQd-AJLdJ1DT-mm0v_qKLbk3PY_DaqI" for 127.0.0.1 at Thu May 12 12:29:02 -0400 2011
+  Processing by AuthenticationsController#create as HTML
+  Parameters: {"code"=>"maVr3PLvqYzyrNaWCFbb2pr5wZknKnv4XfaYy-7kArc.eyJpdiI6IjNLbExBamtSOU9hZGxnVjlnYnUwdncifQ.RqTHi9cYnLqfffs9WT9So6sfLFhan_iM6337cv_JtipXC_TITN9BRdYGuyxqy6r7XOyudVuTiPBLcX-Z1j2hQkMuN7sJmNT-IRQd-AJLdJ1DT-mm0v_qKLbk3PY_DaqI", "provider"=>"facebook"}
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAuthentication Load (0.1ms)[0m  SELECT "authentications".* FROM "authentications" WHERE ("authentications"."uid" = '659477511') AND ("authentications"."provider" = 'facebook') LIMIT 1
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  first_name: Brian
+  email: djbwise@yahoo.com
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+extra: 
+  user_hash: 
+    name: Brian Weisenthal
+    username: brian.weisenthal
+    timezone: -4
+    gender: male
+    id: "659477511"
+    birthday: 10/26/1980
+    last_name: Weisenthal
+    updated_time: 2011-05-09T15:49:39+0000
+    verified: true
+    locale: en_US
+    link: http://www.facebook.com/brian.weisenthal
+    email: djbwise@yahoo.com
+    first_name: Brian
+provider: facebook
+--- !ruby/ActiveRecord:User 
+attributes: 
+  facebook_id: 
+  encrypted_password: $2a$10$f8p8Z0Gp2tsGsE82xcah/.XjQI621pxGl49yZUI6s04rqQ.xjSSuu
+  created_at: 
+  sync_token: 
+  updated_at: 
+  last_sign_in_ip: 
+  last_sign_in_at: 
+  deleted: 
+  created_by: 
+  facebook_access_token: 
+  sign_in_count: 0
+  is_active: true
+  profile_image: 
+  last_name: 
+  authentication_token: 
+  current_sign_in_ip: 
+  remember_token: 
+  reset_password_token: 
+  current_sign_in_at: 
+  remember_created_at: 
+  status: 0
+  first_name: 
+  email: ""
+new reg>>
+Redirected to http://ratemycommit.9mmedia.com:3000/users/sign_up
+Completed 302 Found in 245140ms
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Thu May 12 12:33:09 -0400 2011
+  Processing by RegistrationsController#new as HTML
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  email: djbwise@yahoo.com
+  first_name: Brian
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+provider: facebook
+password required? : yes 
+Rendered devise/shared/_links.erb (2.6ms)
+Rendered registrations/new.html.erb within layouts/application (18.6ms)
+Completed 200 OK in 152ms (Views: 30.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Thu May 12 12:33:11 -0400 2011
+  Processing by RegistrationsController#new as HTML
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  first_name: Brian
+  email: djbwise@yahoo.com
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+provider: facebook
+password required? : yes 
+Rendered devise/shared/_links.erb (2.4ms)
+Rendered registrations/new.html.erb within layouts/application (12.6ms)
+Completed 200 OK in 134ms (Views: 22.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Thu May 12 12:33:38 -0400 2011
+  Processing by RegistrationsController#new as HTML
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  email: djbwise@yahoo.com
+  first_name: Brian
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+provider: facebook
+password required? : yes 
+Rendered devise/shared/_links.erb (1.3ms)
+Rendered registrations/new.html.erb within layouts/application (10.1ms)
+Completed 200 OK in 193ms (Views: 19.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Thu May 12 12:34:17 -0400 2011
+  Processing by RegistrationsController#new as HTML
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  first_name: Brian
+  email: djbwise@yahoo.com
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+provider: facebook
+password required?no
+Rendered devise/shared/_links.erb (1.8ms)
+Rendered registrations/new.html.erb within layouts/application (9.4ms)
+Completed 200 OK in 125ms (Views: 19.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 12:34:28 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (79.1ms)
+Completed 200 OK in 89ms (Views: 88.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Thu May 12 12:34:34 -0400 2011
+  Processing by RegistrationsController#new as HTML
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  first_name: Brian
+  email: djbwise@yahoo.com
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+provider: facebook
+password required?no
+Rendered devise/shared/_links.erb (1.4ms)
+Rendered registrations/new.html.erb within layouts/application (8.9ms)
+Completed 200 OK in 140ms (Views: 19.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Thu May 12 12:34:36 -0400 2011
+  Processing by RegistrationsController#new as HTML
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  email: djbwise@yahoo.com
+  first_name: Brian
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+provider: facebook
+password required?no
+Rendered devise/shared/_links.erb (1.2ms)
+Rendered registrations/new.html.erb within layouts/application (8.1ms)
+Completed 200 OK in 127ms (Views: 18.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 12:34:38 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (78.9ms)
+Completed 200 OK in 86ms (Views: 85.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Thu May 12 12:34:40 -0400 2011
+  Processing by RegistrationsController#new as HTML
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  email: djbwise@yahoo.com
+  first_name: Brian
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+provider: facebook
+password required?no
+Rendered devise/shared/_links.erb (1.4ms)
+Rendered registrations/new.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 128ms (Views: 17.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 12:34:50 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (82.1ms)
+Completed 200 OK in 89ms (Views: 88.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at Thu May 12 12:34:53 -0400 2011
+  Processing by Devise::SessionsController#new as HTML
+Rendered devise/shared/_links.erb (1.4ms)
+Rendered devise/sessions/new.html.erb within layouts/application (10.6ms)
+Completed 200 OK in 45ms (Views: 20.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Thu May 12 12:34:54 -0400 2011
+  Processing by RegistrationsController#new as HTML
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  first_name: Brian
+  email: djbwise@yahoo.com
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+provider: facebook
+password required?no
+Rendered devise/shared/_links.erb (1.4ms)
+Rendered registrations/new.html.erb within layouts/application (8.4ms)
+Completed 200 OK in 210ms (Views: 18.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/auth/facebook" for 127.0.0.1 at Thu May 12 12:35:02 -0400 2011
+
+ActionController::RoutingError (No route matches "/users/auth/facebook"):
+  
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/users/auth/facebook" for 127.0.0.1 at Thu May 12 12:35:33 -0400 2011
+
+ActionController::RoutingError (No route matches "/users/auth/facebook"):
+  
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 12:35:36 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (11.5ms)
+Completed 200 OK in 20ms (Views: 19.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Thu May 12 12:35:38 -0400 2011
+  Processing by RegistrationsController#new as HTML
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  first_name: Brian
+  email: djbwise@yahoo.com
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+provider: facebook
+password required?no
+Rendered devise/shared/_links.erb (1.4ms)
+Rendered registrations/new.html.erb within layouts/application (8.5ms)
+Completed 200 OK in 211ms (Views: 18.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/facebook" for 127.0.0.1 at Thu May 12 12:35:44 -0400 2011
+
+
+Started GET "/auth/facebook/callback?code=K3oEG58lAaJ27msiyb_Z1C9JGsmaAJ-BJLvL1jQEv5M.eyJpdiI6InluV21LMDdid0NSdS1qOERNY2VieHcifQ.qBjcUrwZRP2gaKKzZFQ8wMV-3CdgOK7qmy8rwG6cVuyTJBo2IU3zzY1mzr3XgjqfoZkmShCtuwX87ms4qRdV6WXl6bydlFvpHNK9kwxPG1eA-BAeHvu6iwlO7iIzzP8L" for 127.0.0.1 at Thu May 12 12:35:45 -0400 2011
+  Processing by AuthenticationsController#create as HTML
+  Parameters: {"code"=>"K3oEG58lAaJ27msiyb_Z1C9JGsmaAJ-BJLvL1jQEv5M.eyJpdiI6InluV21LMDdid0NSdS1qOERNY2VieHcifQ.qBjcUrwZRP2gaKKzZFQ8wMV-3CdgOK7qmy8rwG6cVuyTJBo2IU3zzY1mzr3XgjqfoZkmShCtuwX87ms4qRdV6WXl6bydlFvpHNK9kwxPG1eA-BAeHvu6iwlO7iIzzP8L", "provider"=>"facebook"}
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAuthentication Load (0.1ms)[0m  SELECT "authentications".* FROM "authentications" WHERE ("authentications"."uid" = '659477511') AND ("authentications"."provider" = 'facebook') LIMIT 1
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  first_name: Brian
+  email: djbwise@yahoo.com
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+extra: 
+  user_hash: 
+    name: Brian Weisenthal
+    username: brian.weisenthal
+    timezone: -4
+    gender: male
+    id: "659477511"
+    birthday: 10/26/1980
+    last_name: Weisenthal
+    updated_time: 2011-05-09T15:49:39+0000
+    verified: true
+    locale: en_US
+    link: http://www.facebook.com/brian.weisenthal
+    email: djbwise@yahoo.com
+    first_name: Brian
+provider: facebook
+--- !ruby/ActiveRecord:User 
+attributes: 
+  facebook_id: 
+  encrypted_password: $2a$10$23Uy6ipJ68lVQuc8N8yDU.DmmU2HiJ.pF8HACkexcjgjTmUDUvPtW
+  created_at: 
+  sync_token: 
+  updated_at: 
+  last_sign_in_ip: 
+  last_sign_in_at: 
+  deleted: 
+  created_by: 
+  facebook_access_token: 
+  sign_in_count: 0
+  is_active: true
+  profile_image: 
+  last_name: 
+  authentication_token: 
+  current_sign_in_ip: 
+  remember_token: 
+  reset_password_token: 
+  current_sign_in_at: 
+  remember_created_at: 
+  status: 0
+  first_name: 
+  email: ""
+new reg>>
+Redirected to http://ratemycommit.9mmedia.com:3000/users/sign_up
+Completed 302 Found in 181ms
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Thu May 12 12:35:47 -0400 2011
+  Processing by RegistrationsController#new as HTML
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  email: djbwise@yahoo.com
+  first_name: Brian
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+provider: facebook
+password required?no
+Rendered devise/shared/_links.erb (1.3ms)
+Rendered registrations/new.html.erb within layouts/application (8.3ms)
+Completed 200 OK in 125ms (Views: 19.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users" for 127.0.0.1 at Thu May 12 12:35:53 -0400 2011
+  Processing by RegistrationsController#create as HTML
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"X7sXzkw1YLdcpBsT3rUivo/8xmScZppBMI0uSlg2KGE=", "utf8"=>"✓", "user"=>{"email"=>"dj@asdf.com"}}
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  first_name: Brian
+  email: djbwise@yahoo.com
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+provider: facebook
+password required?no
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users"."id" FROM "users" WHERE ("users"."email" = 'dj@asdf.com') LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users"."id" FROM "users" WHERE ("users"."email" = 'dj@asdf.com') LIMIT 1
+  [1m[36mAREL (0.5ms)[0m  [1mINSERT INTO "users" ("authentication_token", "first_name", "sign_in_count", "remember_created_at", "last_name", "created_at", "last_sign_in_ip", "status", "is_active", "sync_token", "facebook_id", "encrypted_password", "created_by", "email", "reset_password_token", "current_sign_in_ip", "profile_image", "facebook_access_token", "deleted", "updated_at", "current_sign_in_at", "remember_token", "last_sign_in_at") VALUES (NULL, NULL, 0, NULL, NULL, '2011-05-12 16:35:53.988154', NULL, 0, 't', NULL, NULL, '$2a$10$bVSq4ezufHkOi6b0vBHCmea0I0i.0jj8BJnnJVi0EVWFTSj5/2XiC', NULL, 'dj@asdf.com', NULL, NULL, NULL, NULL, NULL, '2011-05-12 16:35:53.988154', NULL, NULL, NULL)[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "authentications" ("user_id", "updated_at", "uid", "provider", "created_at", "token") VALUES (6, '2011-05-12 16:35:53.990699', '659477511', 'facebook', '2011-05-12 16:35:53.990699', '152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74')
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "users" SET "sign_in_count" = 1, "last_sign_in_ip" = '127.0.0.1', "current_sign_in_ip" = '127.0.0.1', "updated_at" = '2011-05-12 16:35:53.997821', "current_sign_in_at" = '2011-05-12 16:35:53.997397', "last_sign_in_at" = '2011-05-12 16:35:53.997397' WHERE ("users"."id" = 6)[0m
+Redirected to http://ratemycommit.9mmedia.com:3000/
+Completed 302 Found in 266ms
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 12:35:54 -0400 2011
+  Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+Rendered home/index.html.erb within layouts/application (23.1ms)
+Completed 200 OK in 30ms (Views: 29.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at Thu May 12 12:35:58 -0400 2011
+  Processing by Devise::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+Redirected to http://ratemycommit.9mmedia.com:3000/
+Completed 302 Found in 40ms
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 12:35:58 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (100.5ms)
+Completed 200 OK in 111ms (Views: 110.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Thu May 12 12:35:59 -0400 2011
+  Processing by RegistrationsController#new as HTML
+Rendered devise/shared/_links.erb (2.3ms)
+Rendered registrations/new.html.erb within layouts/application (35.8ms)
+Completed 200 OK in 62ms (Views: 49.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 12:36:51 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (79.5ms)
+Completed 200 OK in 87ms (Views: 87.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/facebook" for 127.0.0.1 at Thu May 12 12:36:52 -0400 2011
+
+
+Started GET "/auth/facebook/callback?code=AsUCD-zWXP9CFAp0f04A1g1Cd17_86QIal0kGbU1y5U.eyJpdiI6IkszWFM0Nng2TWJ1LWtCWDc5ZGFzbHcifQ.BWL1XJlcbAz_Q9X_u2q-N6kxestwFTrEkXpgnRmyazxblDiy_DAjJWnkMO-Pr_9RPRJa_JakfsxzIY95uJO1IX2hDxt5ylzhTeGc_J7mdVbsIvemY-Jyf7AGkT6Y0zkZ" for 127.0.0.1 at Thu May 12 12:36:53 -0400 2011
+  Processing by AuthenticationsController#create as HTML
+  Parameters: {"code"=>"AsUCD-zWXP9CFAp0f04A1g1Cd17_86QIal0kGbU1y5U.eyJpdiI6IkszWFM0Nng2TWJ1LWtCWDc5ZGFzbHcifQ.BWL1XJlcbAz_Q9X_u2q-N6kxestwFTrEkXpgnRmyazxblDiy_DAjJWnkMO-Pr_9RPRJa_JakfsxzIY95uJO1IX2hDxt5ylzhTeGc_J7mdVbsIvemY-Jyf7AGkT6Y0zkZ", "provider"=>"facebook"}
+  [1m[35mAuthentication Load (0.2ms)[0m  SELECT "authentications".* FROM "authentications" WHERE ("authentications"."uid" = '659477511') AND ("authentications"."provider" = 'facebook') LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  UPDATE "users" SET "sign_in_count" = 2, "current_sign_in_at" = '2011-05-12 16:36:55.221402', "updated_at" = '2011-05-12 16:36:55.222265' WHERE ("users"."id" = 6)
+Redirected to http://ratemycommit.9mmedia.com:3000/
+Completed 302 Found in 41ms
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 12:36:55 -0400 2011
+  Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+Rendered home/index.html.erb within layouts/application (26.3ms)
+Completed 200 OK in 33ms (Views: 32.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at Thu May 12 12:36:58 -0400 2011
+  Processing by Devise::SessionsController#destroy as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+Redirected to http://ratemycommit.9mmedia.com:3000/
+Completed 302 Found in 37ms
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 12:36:58 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (17.0ms)
+Completed 200 OK in 27ms (Views: 26.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 12:37:15 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (112.0ms)
+Completed 200 OK in 122ms (Views: 122.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/facebook" for 127.0.0.1 at Thu May 12 12:37:18 -0400 2011
+
+
+Started GET "/auth/facebook/callback?code=uzGXQ9fgMJrp3z08sBu2hta2-jYLX7dXNQsaHk_1aLk.eyJpdiI6Ii1tRTRZSmVfaTRJUExMcFczWUJmeHcifQ.NuCvh1maZxFqzEyhoXROj3w5LlRtBJhfaHS-QIzeyqrg8F-3DT2wLL_h3mYxW17cOev1MJVpOK5QjqVkv7Jp5MzKz-5khR41RRUc8TUSe-n0hSDWICSt-wGqDErmO5Ta" for 127.0.0.1 at Thu May 12 12:37:18 -0400 2011
+  Processing by AuthenticationsController#create as HTML
+  Parameters: {"code"=>"uzGXQ9fgMJrp3z08sBu2hta2-jYLX7dXNQsaHk_1aLk.eyJpdiI6Ii1tRTRZSmVfaTRJUExMcFczWUJmeHcifQ.NuCvh1maZxFqzEyhoXROj3w5LlRtBJhfaHS-QIzeyqrg8F-3DT2wLL_h3mYxW17cOev1MJVpOK5QjqVkv7Jp5MzKz-5khR41RRUc8TUSe-n0hSDWICSt-wGqDErmO5Ta", "provider"=>"facebook"}
+  [1m[36mAuthentication Load (0.1ms)[0m  [1mSELECT "authentications".* FROM "authentications" WHERE ("authentications"."uid" = '659477511') AND ("authentications"."provider" = 'facebook') LIMIT 1[0m
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  first_name: Brian
+  email: djbwise@yahoo.com
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+extra: 
+  user_hash: 
+    name: Brian Weisenthal
+    username: brian.weisenthal
+    timezone: -4
+    gender: male
+    id: "659477511"
+    birthday: 10/26/1980
+    last_name: Weisenthal
+    updated_time: 2011-05-09T15:49:39+0000
+    verified: true
+    locale: en_US
+    link: http://www.facebook.com/brian.weisenthal
+    email: djbwise@yahoo.com
+    first_name: Brian
+provider: facebook
+--- !ruby/ActiveRecord:User 
+attributes: 
+  facebook_id: 
+  encrypted_password: $2a$10$5syfysw/lCg4zvIS1htYUuMGZq2YG3vdk3LBKhh9csZ4SKYebWvfa
+  created_at: 
+  sync_token: 
+  updated_at: 
+  last_sign_in_ip: 
+  last_sign_in_at: 
+  deleted: 
+  created_by: 
+  facebook_access_token: 
+  sign_in_count: 0
+  is_active: true
+  profile_image: 
+  last_name: 
+  authentication_token: 
+  current_sign_in_ip: 
+  remember_token: 
+  reset_password_token: 
+  current_sign_in_at: 
+  remember_created_at: 
+  status: 0
+  first_name: 
+  email: ""
+new reg>>
+Redirected to http://ratemycommit.9mmedia.com:3000/users/sign_up
+Completed 302 Found in 176ms
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Thu May 12 12:37:20 -0400 2011
+  Processing by RegistrationsController#new as HTML
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  email: djbwise@yahoo.com
+  first_name: Brian
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+provider: facebook
+Rendered devise/shared/_links.erb (1.2ms)
+Rendered registrations/new.html.erb within layouts/application (8.1ms)
+Completed 200 OK in 124ms (Views: 17.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Thu May 12 12:37:21 -0400 2011
+  Processing by RegistrationsController#new as HTML
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  first_name: Brian
+  email: djbwise@yahoo.com
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+provider: facebook
+Rendered devise/shared/_links.erb (1.6ms)
+Rendered registrations/new.html.erb within layouts/application (11.3ms)
+Completed 200 OK in 135ms (Views: 23.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Thu May 12 12:37:23 -0400 2011
+  Processing by RegistrationsController#new as HTML
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  email: djbwise@yahoo.com
+  first_name: Brian
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+provider: facebook
+Rendered devise/shared/_links.erb (1.8ms)
+Rendered registrations/new.html.erb within layouts/application (10.4ms)
+Completed 200 OK in 215ms (Views: 21.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/facebook" for 127.0.0.1 at Thu May 12 12:37:39 -0400 2011
+
+
+Started GET "/auth/facebook/callback?code=Eb7fNckc2_o69r42mLlov1p5__78WkH5BJB6GvPPNjc.eyJpdiI6IjJxTWhPMmEwNUlPdUhxQVF2eUphM2cifQ.HW3dBzEsvpu749Yyknd_2jyQLMsbZ8yc6hnYCY2STjKRz2pYZMfJUnHmnh-BM8VlbrwmAvxkSHuTM6EW8YEm5u4QGVmbswhC0-91BIj4hiKHLoj_3Fx_6nKK3lORWUDa" for 127.0.0.1 at Thu May 12 12:37:40 -0400 2011
+  Processing by AuthenticationsController#create as HTML
+  Parameters: {"code"=>"Eb7fNckc2_o69r42mLlov1p5__78WkH5BJB6GvPPNjc.eyJpdiI6IjJxTWhPMmEwNUlPdUhxQVF2eUphM2cifQ.HW3dBzEsvpu749Yyknd_2jyQLMsbZ8yc6hnYCY2STjKRz2pYZMfJUnHmnh-BM8VlbrwmAvxkSHuTM6EW8YEm5u4QGVmbswhC0-91BIj4hiKHLoj_3Fx_6nKK3lORWUDa", "provider"=>"facebook"}
+  [1m[35mAuthentication Load (0.1ms)[0m  SELECT "authentications".* FROM "authentications" WHERE ("authentications"."uid" = '659477511') AND ("authentications"."provider" = 'facebook') LIMIT 1
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  first_name: Brian
+  email: djbwise@yahoo.com
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+extra: 
+  user_hash: 
+    name: Brian Weisenthal
+    username: brian.weisenthal
+    timezone: -4
+    gender: male
+    id: "659477511"
+    birthday: 10/26/1980
+    last_name: Weisenthal
+    updated_time: 2011-05-09T15:49:39+0000
+    verified: true
+    locale: en_US
+    link: http://www.facebook.com/brian.weisenthal
+    email: djbwise@yahoo.com
+    first_name: Brian
+provider: facebook
+--- !ruby/ActiveRecord:User 
+attributes: 
+  facebook_id: 
+  encrypted_password: $2a$10$1GMOx4oLMhxhq.DnzkYY9u0..1gy0Gs4S0GUOaUPSZcWlM.1dmcku
+  created_at: 
+  sync_token: 
+  updated_at: 
+  last_sign_in_ip: 
+  last_sign_in_at: 
+  deleted: 
+  created_by: 
+  facebook_access_token: 
+  sign_in_count: 0
+  is_active: true
+  profile_image: 
+  last_name: 
+  authentication_token: 
+  current_sign_in_ip: 
+  remember_token: 
+  reset_password_token: 
+  current_sign_in_at: 
+  remember_created_at: 
+  status: 0
+  first_name: 
+  email: ""
+new reg>>
+Redirected to http://ratemycommit.9mmedia.com:3000/users/sign_up
+Completed 302 Found in 112ms
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Thu May 12 12:37:41 -0400 2011
+  Processing by RegistrationsController#new as HTML
+Rendered devise/shared/_links.erb (1.6ms)
+Rendered registrations/new.html.erb within layouts/application (25.9ms)
+Completed 200 OK in 46ms (Views: 35.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Thu May 12 12:37:47 -0400 2011
+  Processing by RegistrationsController#new as HTML
+Rendered devise/shared/_links.erb (1.6ms)
+Rendered registrations/new.html.erb within layouts/application (93.6ms)
+Completed 200 OK in 116ms (Views: 105.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/facebook" for 127.0.0.1 at Thu May 12 12:37:49 -0400 2011
+
+
+Started GET "/auth/facebook/callback?code=VN1Q1fzsa1AduWQXfXSY40r9DzmJP6ahQiB4iVJ-Ybw.eyJpdiI6IlR2U1lLLTZjSzg1SnQxdURiNXJOalEifQ.CdhfPuwGrHER4NY7e8TZ6eTuYX5Q1On6SYJ6mGLUP1rVBMhbNbLDCJrKzT8mE-KlKu4G5V-bwMAJg7xZfPYW_napfQq-FbAiMOHnZRndTTIa9YlU2w5vftkbJJqmeI3p" for 127.0.0.1 at Thu May 12 12:37:49 -0400 2011
+  Processing by AuthenticationsController#create as HTML
+  Parameters: {"code"=>"VN1Q1fzsa1AduWQXfXSY40r9DzmJP6ahQiB4iVJ-Ybw.eyJpdiI6IlR2U1lLLTZjSzg1SnQxdURiNXJOalEifQ.CdhfPuwGrHER4NY7e8TZ6eTuYX5Q1On6SYJ6mGLUP1rVBMhbNbLDCJrKzT8mE-KlKu4G5V-bwMAJg7xZfPYW_napfQq-FbAiMOHnZRndTTIa9YlU2w5vftkbJJqmeI3p", "provider"=>"facebook"}
+  [1m[36mAuthentication Load (0.1ms)[0m  [1mSELECT "authentications".* FROM "authentications" WHERE ("authentications"."uid" = '659477511') AND ("authentications"."provider" = 'facebook') LIMIT 1[0m
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  first_name: Brian
+  email: djbwise@yahoo.com
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+extra: 
+  user_hash: 
+    name: Brian Weisenthal
+    username: brian.weisenthal
+    timezone: -4
+    gender: male
+    id: "659477511"
+    birthday: 10/26/1980
+    last_name: Weisenthal
+    updated_time: 2011-05-09T15:49:39+0000
+    verified: true
+    locale: en_US
+    link: http://www.facebook.com/brian.weisenthal
+    email: djbwise@yahoo.com
+    first_name: Brian
+provider: facebook
+--- !ruby/ActiveRecord:User 
+attributes: 
+  facebook_id: 
+  encrypted_password: $2a$10$qqrl0pKiOUXcmq9nw4ZGO.r7iA0DwTaJx2L3zeer5S9pSNhvldaJW
+  created_at: 
+  sync_token: 
+  updated_at: 
+  last_sign_in_ip: 
+  last_sign_in_at: 
+  deleted: 
+  created_by: 
+  facebook_access_token: 
+  sign_in_count: 0
+  is_active: true
+  profile_image: 
+  last_name: 
+  authentication_token: 
+  current_sign_in_ip: 
+  remember_token: 
+  reset_password_token: 
+  current_sign_in_at: 
+  remember_created_at: 
+  status: 0
+  first_name: 
+  email: ""
+new reg>>
+Redirected to http://ratemycommit.9mmedia.com:3000/users/sign_up
+Completed 302 Found in 112ms
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Thu May 12 12:37:51 -0400 2011
+  Processing by RegistrationsController#new as HTML
+Rendered devise/shared/_links.erb (1.5ms)
+Rendered registrations/new.html.erb within layouts/application (23.9ms)
+Completed 200 OK in 116ms (Views: 33.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/auth/facebook" for 127.0.0.1 at Thu May 12 12:42:18 -0400 2011
+
+
+Started GET "/auth/facebook/callback?code=fSg7HMrFE6N9PL4FBGsCeyDYBGdTPrHVnJLslidd6Sk.eyJpdiI6ImlOWU9WeE9FTG9RT2lERkgzaHRlZncifQ.7n9wKIqXtdAT4DDA1DkucmHhA_gL2SaRdkqMA8-BdNg6eA3jsQBCGkPCc_zWxcGq9ITAb9W2XHbRdIQ81WqTjCCTLKC_JFyMma8PJZClHSiGzIWG8w8txMJi1n9MGN4o" for 127.0.0.1 at Thu May 12 12:42:19 -0400 2011
+  Processing by AuthenticationsController#create as HTML
+  Parameters: {"code"=>"fSg7HMrFE6N9PL4FBGsCeyDYBGdTPrHVnJLslidd6Sk.eyJpdiI6ImlOWU9WeE9FTG9RT2lERkgzaHRlZncifQ.7n9wKIqXtdAT4DDA1DkucmHhA_gL2SaRdkqMA8-BdNg6eA3jsQBCGkPCc_zWxcGq9ITAb9W2XHbRdIQ81WqTjCCTLKC_JFyMma8PJZClHSiGzIWG8w8txMJi1n9MGN4o", "provider"=>"facebook"}
+  [1m[35mAuthentication Load (0.1ms)[0m  SELECT "authentications".* FROM "authentications" WHERE ("authentications"."uid" = '659477511') AND ("authentications"."provider" = 'facebook') LIMIT 1
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  first_name: Brian
+  email: djbwise@yahoo.com
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+extra: 
+  user_hash: 
+    name: Brian Weisenthal
+    username: brian.weisenthal
+    timezone: -4
+    gender: male
+    id: "659477511"
+    birthday: 10/26/1980
+    last_name: Weisenthal
+    updated_time: 2011-05-09T15:49:39+0000
+    verified: true
+    locale: en_US
+    link: http://www.facebook.com/brian.weisenthal
+    email: djbwise@yahoo.com
+    first_name: Brian
+provider: facebook
+--- !ruby/ActiveRecord:User 
+attributes: 
+  facebook_id: 
+  encrypted_password: $2a$10$0hU6dRmiPmag0NZXV6lMXuKlxpPsTtST3QyFe5BNjXtTaHacawcMW
+  created_at: 
+  sync_token: 
+  updated_at: 
+  last_sign_in_ip: 
+  last_sign_in_at: 
+  deleted: 
+  created_by: 
+  facebook_access_token: 
+  sign_in_count: 0
+  is_active: true
+  profile_image: 
+  last_name: 
+  authentication_token: 
+  current_sign_in_ip: 
+  remember_token: 
+  reset_password_token: 
+  current_sign_in_at: 
+  remember_created_at: 
+  status: 0
+  first_name: 
+  email: ""
+new reg>>
+Redirected to http://ratemycommit.9mmedia.com:3000/users/sign_up
+Completed 302 Found in 176ms
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Thu May 12 12:42:21 -0400 2011
+  Processing by RegistrationsController#new as HTML
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  email: djbwise@yahoo.com
+  first_name: Brian
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+provider: facebook
+Rendered devise/shared/_links.erb (1.5ms)
+Rendered registrations/new.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 124ms (Views: 19.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Thu May 12 12:42:23 -0400 2011
+  Processing by RegistrationsController#new as HTML
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  first_name: Brian
+  email: djbwise@yahoo.com
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+provider: facebook
+Rendered devise/shared/_links.erb (1.2ms)
+Rendered registrations/new.html.erb within layouts/application (8.1ms)
+Completed 200 OK in 216ms (Views: 19.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at Thu May 12 12:42:26 -0400 2011
+  Processing by Devise::SessionsController#new as HTML
+Rendered devise/shared/_links.erb (1.9ms)
+Rendered devise/sessions/new.html.erb within layouts/application (12.4ms)
+Completed 200 OK in 48ms (Views: 22.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Thu May 12 12:42:27 -0400 2011
+  Processing by RegistrationsController#new as HTML
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  first_name: Brian
+  email: djbwise@yahoo.com
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+provider: facebook
+Rendered devise/shared/_links.erb (2.0ms)
+Rendered registrations/new.html.erb within layouts/application (11.6ms)
+Completed 200 OK in 142ms (Views: 22.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at Thu May 12 12:47:28 -0400 2011
+  Processing by RegistrationsController#create as HTML
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"iaIwmuIcC2fboyL2mO7GF9NOK0GQ2wPmddBqwCF8WHs=", "utf8"=>"✓", "user"=>{"email"=>"fuck@.acom"}}
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  email: djbwise@yahoo.com
+  first_name: Brian
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+provider: facebook
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users"."id" FROM "users" WHERE ("users"."email" = 'fuck@.acom') LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users"."id" FROM "users" WHERE ("users"."email" = 'fuck@.acom') LIMIT 1
+Rendered devise/shared/_links.erb (1.7ms)
+Rendered registrations/new.html.erb within layouts/application (9.8ms)
+Completed 200 OK in 204ms (Views: 20.6ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users" for 127.0.0.1 at Thu May 12 12:47:31 -0400 2011
+  Processing by RegistrationsController#create as HTML
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"iaIwmuIcC2fboyL2mO7GF9NOK0GQ2wPmddBqwCF8WHs=", "utf8"=>"✓", "user"=>{"email"=>"fuck@d.acom"}}
+--- 
+user_info: 
+  name: Brian Weisenthal
+  urls: 
+    Facebook: http://www.facebook.com/brian.weisenthal
+    Website: 
+  nickname: brian.weisenthal
+  last_name: Weisenthal
+  image: http://graph.facebook.com/659477511/picture?type=square
+  first_name: Brian
+  email: djbwise@yahoo.com
+uid: "659477511"
+credentials: 
+  token: 152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74
+provider: facebook
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users"."id" FROM "users" WHERE ("users"."email" = 'fuck@d.acom') LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users"."id" FROM "users" WHERE ("users"."email" = 'fuck@d.acom') LIMIT 1
+  [1m[36mAREL (0.5ms)[0m  [1mINSERT INTO "users" ("reset_password_token", "authentication_token", "profile_image", "created_by", "first_name", "is_active", "facebook_access_token", "last_sign_in_ip", "remember_token", "email", "remember_created_at", "updated_at", "encrypted_password", "sync_token", "current_sign_in_ip", "deleted", "last_sign_in_at", "facebook_id", "current_sign_in_at", "last_name", "created_at", "status", "sign_in_count") VALUES (NULL, NULL, NULL, NULL, NULL, 't', NULL, NULL, NULL, 'fuck@d.acom', NULL, '2011-05-12 16:47:31.546110', '$2a$10$tFHLppHXD4BdwzaRirWdFuz99hDVVIyA4BkLGTpp6DKgG5A3PZF1a', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2011-05-12 16:47:31.546110', 0, 0)[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "authentications" ("token", "user_id", "provider", "uid", "created_at", "updated_at") VALUES ('152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74', 7, 'facebook', '659477511', '2011-05-12 16:47:31.548981', '2011-05-12 16:47:31.548981')
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE "users" SET "last_sign_in_ip" = '127.0.0.1', "updated_at" = '2011-05-12 16:47:31.555408', "current_sign_in_ip" = '127.0.0.1', "last_sign_in_at" = '2011-05-12 16:47:31.555021', "current_sign_in_at" = '2011-05-12 16:47:31.555021', "sign_in_count" = 1 WHERE ("users"."id" = 7)[0m
+Redirected to http://ratemycommit.9mmedia.com:3000/
+Completed 302 Found in 151ms
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 12:47:31 -0400 2011
+  Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 7) LIMIT 1
+Rendered home/index.html.erb within layouts/application (28.4ms)
+Completed 200 OK in 36ms (Views: 35.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at Thu May 12 12:47:35 -0400 2011
+  Processing by Devise::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 7) LIMIT 1[0m
+Redirected to http://ratemycommit.9mmedia.com:3000/
+Completed 302 Found in 123ms
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 12:47:36 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (12.4ms)
+Completed 200 OK in 19ms (Views: 18.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/auth/facebook" for 127.0.0.1 at Thu May 12 12:47:39 -0400 2011
+
+
+Started GET "/auth/facebook/callback?code=dn1wi0fHCpcL1kkku2qOybG3SCEGhumU13I0PnsHe-0.eyJpdiI6InVUMENwNnNFSFJmVXdiLVZDcFJQZGcifQ.fzDKHI55r7NHGHyF0xAWht4vM3KoFKt5aXncKcY61vdVVjXIlq21KZ6IqOlJRnqZosoI3ag8bpB3_vZsShvCEixWNvVPS6Udj0gPir1zHASAz6KjiFwtWyHLC-4NHOM2" for 127.0.0.1 at Thu May 12 12:47:39 -0400 2011
+  Processing by AuthenticationsController#create as HTML
+  Parameters: {"code"=>"dn1wi0fHCpcL1kkku2qOybG3SCEGhumU13I0PnsHe-0.eyJpdiI6InVUMENwNnNFSFJmVXdiLVZDcFJQZGcifQ.fzDKHI55r7NHGHyF0xAWht4vM3KoFKt5aXncKcY61vdVVjXIlq21KZ6IqOlJRnqZosoI3ag8bpB3_vZsShvCEixWNvVPS6Udj0gPir1zHASAz6KjiFwtWyHLC-4NHOM2", "provider"=>"facebook"}
+  [1m[35mAuthentication Load (0.2ms)[0m  SELECT "authentications".* FROM "authentications" WHERE ("authentications"."uid" = '659477511') AND ("authentications"."provider" = 'facebook') LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 7) LIMIT 1[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "users" SET "sign_in_count" = 2, "updated_at" = '2011-05-12 16:47:41.452462', "current_sign_in_at" = '2011-05-12 16:47:41.451890' WHERE ("users"."id" = 7)
+Redirected to http://ratemycommit.9mmedia.com:3000/
+Completed 302 Found in 119ms
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 12:47:41 -0400 2011
+  Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 7) LIMIT 1[0m
+Rendered home/index.html.erb within layouts/application (24.7ms)
+Completed 200 OK in 32ms (Views: 31.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 18:16:46 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (12.1ms)
+Completed 200 OK in 20ms (Views: 19.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 18:22:57 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 22ms (Views: 21.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 18:23:04 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (12.9ms)
+Completed 200 OK in 20ms (Views: 19.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/facebook" for 127.0.0.1 at Thu May 12 18:23:08 -0400 2011
+
+
+Started GET "/auth/facebook/callback?code=o_hxcx3VSmn9mpE-yggVlyWQFp9ZFB_jeFPgTagu5YQ.eyJpdiI6ImlUWFkzVWk5OXFIZ2UwS1FUX1Y2eUEifQ.ivhMnxpPkI7Ctj0-2F8FQcuykbCMC_CS28T8jJth6L58u7p5VC3FeQc0hBlSQ86bII0DALChr2gY7ltDZmfNJgfhD5tcCH4P6qwq-Y6bR4KiMeOqv0IpQ6RBPjTN2vjD" for 127.0.0.1 at Thu May 12 18:23:09 -0400 2011
+  Processing by AuthenticationsController#create as HTML
+  Parameters: {"code"=>"o_hxcx3VSmn9mpE-yggVlyWQFp9ZFB_jeFPgTagu5YQ.eyJpdiI6ImlUWFkzVWk5OXFIZ2UwS1FUX1Y2eUEifQ.ivhMnxpPkI7Ctj0-2F8FQcuykbCMC_CS28T8jJth6L58u7p5VC3FeQc0hBlSQ86bII0DALChr2gY7ltDZmfNJgfhD5tcCH4P6qwq-Y6bR4KiMeOqv0IpQ6RBPjTN2vjD", "provider"=>"facebook"}
+  [1m[35mAuthentication Load (0.2ms)[0m  SELECT "authentications".* FROM "authentications" WHERE ("authentications"."uid" = '659477511') AND ("authentications"."provider" = 'facebook') LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 7) LIMIT 1[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "users" SET "sign_in_count" = 3, "current_sign_in_at" = '2011-05-12 22:23:11.174779', "last_sign_in_at" = '2011-05-12 16:47:41.451890', "updated_at" = '2011-05-12 22:23:11.175321' WHERE ("users"."id" = 7)
+Redirected to http://ratemycommit.9mmedia.com:3000/
+Completed 302 Found in 149ms
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 18:23:11 -0400 2011
+  Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 7) LIMIT 1[0m
+Rendered home/index.html.erb within layouts/application (23.5ms)
+Completed 200 OK in 31ms (Views: 30.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at Thu May 12 18:23:15 -0400 2011
+  Processing by Devise::SessionsController#destroy as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 7) LIMIT 1
+Redirected to http://ratemycommit.9mmedia.com:3000/
+Completed 302 Found in 119ms
+
+
+Started GET "/" for 127.0.0.1 at Thu May 12 18:23:15 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (15.0ms)
+Completed 200 OK in 23ms (Views: 22.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/auth/twitter" for 127.0.0.1 at Thu May 12 18:23:33 -0400 2011
+
+ActionController::RoutingError (No route matches "/auth/twitter"):
+  
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/auth/twitter" for 127.0.0.1 at Thu May 12 18:23:58 -0400 2011
+
+OAuth::Unauthorized (401 Unauthorized):
+  
+
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.7ms)
+Rendered /Users/djbwise/.rvm/gems/ruby-1.8.7-p330/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (31.7ms)
+
+
+Started GET "/" for 127.0.0.1 at Fri May 13 08:50:58 -0400 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 19ms (Views: 18.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Fri May 13 08:51:00 -0400 2011
+  Processing by RegistrationsController#new as HTML
+Rendered devise/shared/_links.erb (1.6ms)
+Rendered registrations/new.html.erb within layouts/application (119.5ms)
+Completed 200 OK in 161ms (Views: 146.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at Fri May 13 08:51:02 -0400 2011
+  Processing by Devise::SessionsController#new as HTML
+Rendered devise/shared/_links.erb (1.3ms)
+Rendered devise/sessions/new.html.erb within layouts/application (10.6ms)
+Completed 200 OK in 44ms (Views: 19.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/facebook" for 127.0.0.1 at Fri May 13 08:51:04 -0400 2011
+
+
+Started GET "/auth/facebook/callback?code=VTSKgzsSjkrEFxIiTRJevsyGrhApmqsnhabXamCj6LM.eyJpdiI6IkxvQ0ZhZ2xyTWFYUzlnZTJaV2d1dHcifQ.5mS_k2cllxYbv3Cs4toSuNiCd2CFqwXG9-hNhv3M3LcCsM4mcNnyfiKVv3NZH54YoTwNfPtVxuKwPWoG34BVhwcWN7QC23FsCDHFoWZr9aVUgA4a_Eo0DqXwMgioTvAS" for 127.0.0.1 at Fri May 13 08:51:05 -0400 2011
+  Processing by AuthenticationsController#create as HTML
+  Parameters: {"code"=>"VTSKgzsSjkrEFxIiTRJevsyGrhApmqsnhabXamCj6LM.eyJpdiI6IkxvQ0ZhZ2xyTWFYUzlnZTJaV2d1dHcifQ.5mS_k2cllxYbv3Cs4toSuNiCd2CFqwXG9-hNhv3M3LcCsM4mcNnyfiKVv3NZH54YoTwNfPtVxuKwPWoG34BVhwcWN7QC23FsCDHFoWZr9aVUgA4a_Eo0DqXwMgioTvAS", "provider"=>"facebook"}
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAuthentication Load (0.2ms)[0m  SELECT "authentications".* FROM "authentications" WHERE ("authentications"."uid" = '659477511') AND ("authentications"."provider" = 'facebook') LIMIT 1
+--- !ruby/ActiveRecord:User 
+attributes: 
+  facebook_id: 
+  encrypted_password: $2a$10$jCxVms9ZNkVQVRj9v97qzeE29etIXbN87EdtIdtT/lYYmc.4pBEAm
+  created_at: 
+  sync_token: 
+  updated_at: 
+  last_sign_in_ip: 
+  last_sign_in_at: 
+  deleted: 
+  created_by: 
+  facebook_access_token: 
+  sign_in_count: 0
+  is_active: true
+  profile_image: 
+  last_name: 
+  authentication_token: 
+  current_sign_in_ip: 
+  remember_token: 
+  reset_password_token: 
+  current_sign_in_at: 
+  remember_created_at: 
+  status: 0
+  first_name: 
+  email: djbwise@yahoo.com
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" WHERE ("users"."email" = 'djbwise@yahoo.com') LIMIT 1[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "users" ("sign_in_count", "sync_token", "created_at", "facebook_id", "profile_image", "is_active", "encrypted_password", "last_sign_in_at", "updated_at", "current_sign_in_at", "remember_token", "authentication_token", "last_sign_in_ip", "facebook_access_token", "email", "first_name", "created_by", "remember_created_at", "last_name", "deleted", "reset_password_token", "current_sign_in_ip", "status") VALUES (0, NULL, '2011-05-13 12:51:07.189304', NULL, NULL, 't', '$2a$10$jCxVms9ZNkVQVRj9v97qzeE29etIXbN87EdtIdtT/lYYmc.4pBEAm', NULL, '2011-05-13 12:51:07.189304', NULL, NULL, NULL, NULL, NULL, 'djbwise@yahoo.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0)
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "authentications" ("created_at", "updated_at", "provider", "user_id", "uid", "token") VALUES ('2011-05-13 12:51:07.191764', '2011-05-13 12:51:07.191764', 'facebook', 8, '659477511', '152221874843333|22600396390bfbb7e0e9dbd3.1-659477511|Ot1ZWVGDCgdK8S6c8GJuW5P9m74')[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "users" SET "sign_in_count" = 1, "last_sign_in_at" = '2011-05-13 12:51:07.198389', "updated_at" = '2011-05-13 12:51:07.198787', "current_sign_in_at" = '2011-05-13 12:51:07.198389', "last_sign_in_ip" = '127.0.0.1', "current_sign_in_ip" = '127.0.0.1' WHERE ("users"."id" = 8)
+Redirected to http://ratemycommit.9mmedia.com:3000/
+Completed 302 Found in 205ms
+
+
+Started GET "/" for 127.0.0.1 at Fri May 13 08:51:07 -0400 2011
+  Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 8) LIMIT 1[0m
+Rendered home/index.html.erb within layouts/application (25.9ms)
+Completed 200 OK in 33ms (Views: 32.2ms | ActiveRecord: 1.8ms)
