@@ -6,6 +6,7 @@ This shell app includes:
 	
 	* devise - for authentication
 	* omniauth - for facebook/twitter etc
+	* fb_graph - for the facebook
 	* DelayedJob - background tasks, not used for every project but nice to have and doesnt hurt anyone
 	* Home controller setup
 	* 960 gs - css frameowrk for fast prototyping, can see the use in the header in application.html.erb
